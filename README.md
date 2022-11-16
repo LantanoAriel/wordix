@@ -12,4 +12,4 @@ Universidad Nacional del Comahue
 
 - **Lantaño Ariel** - Legajo 2305 - mail: s.lantanoariel@gmail.com - Github: lantanoariel
 - **Ferrada Bruno** - Legajo 3307 - mail: brunoferrada1212@gmail.com - Github: BrunoFerrada
--**Fabricio Diaz** - Legajo 4210 - mail: fabricio.diaz@est.fi.uncoma.edu.ar - Github: diazfabrici0
+- **Fabricio Diaz** - Legajo 4210 - mail: dfabricio255@gmail.com - Github: diazfabrici0
