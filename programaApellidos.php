@@ -5,7 +5,8 @@ include_once("wordix.php");
 /***** DATOS DE LOS INTEGRANTES *******/
 /**************************************/
 
-/* Apellido, Nombre. Legajo. Carrera. mail. Usuario Github */
+/* Diaz, Fabricio. FAI-4210. TUWD. dfabricio255@gmail.com. diazfabrici0
+Apellido, Nombre. Legajo. Carrera. mail. Usuario Github */
 /* ... COMPLETAR ... */
 
 
@@ -25,7 +26,7 @@ function cargarColeccionPalabras()
         "GATOS", "GOTAS", "HUEVO", "TINTO", "NAVES",
         "VERDE", "MELON", "YUYOS", "PIANO", "PISOS", 
         "PERRO", "PLAZA", "DANZA", "LAPIZ", "RELOJ"
-        /* ... COMPLETAR ... Agregar 5 palabras más */
+
     ];
 
     return ($coleccionPalabras);
