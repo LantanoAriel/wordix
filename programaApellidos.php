@@ -6,6 +6,7 @@ include_once("wordix.php");
 /**************************************/
 
 /* Diaz, Fabricio. FAI-4210. TUWD. dfabricio255@gmail.com. diazfabrici0
+Ferrada, Bruno. FAI-3307. TUDW. brunoferrada1212@gmail.com. BrunoFerrada
 Apellido, Nombre. Legajo. Carrera. mail. Usuario Github */
 /* ... COMPLETAR ... */
 
