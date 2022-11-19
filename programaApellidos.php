@@ -5,11 +5,12 @@ include_once("wordix.php");
 /***** DATOS DE LOS INTEGRANTES *******/
 /**************************************/
 
-/* Diaz, Fabricio. FAI-4210. TUWD. dfabricio255@gmail.com. diazfabrici0
+/* 
+Diaz, Fabricio. FAI-4210. TUWD. dfabricio255@gmail.com. diazfabrici0
 Ferrada, Bruno. FAI-3307. TUDW. brunoferrada1212@gmail.com. BrunoFerrada
 Ferrada, Mauro. FAI-4211. TUDW. mauroferrada01@gmail.com. MauroFerrada
 Lantaño, Daniel Ariel. FAI-2305. TUDW. s.lantanoariel@gmail.com. lantanoariel
-Apellido, Nombre. Legajo. Carrera. mail. Usuario Github */
+*/
 /* ... COMPLETAR ... */
 
 
