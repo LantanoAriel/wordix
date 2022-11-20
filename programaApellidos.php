@@ -68,7 +68,7 @@ echo " Bienvenido! Por favor ingrese su nombre. ";
 $jugador = trim(fgets(STDIN));
 escribirMensajeBienvenida($jugador);
 
-echo"Elija una opcion: \n"
+echo"Elija una opcion: \n";
 
 
 //print_r($partida);
