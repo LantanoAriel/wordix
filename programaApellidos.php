@@ -36,6 +36,20 @@ function cargarColeccionPalabras()
     return ($coleccionPalabras);
 }
 
+function escribirMensajeBienvenida($usuario)
+{
+    echo "***************************************************\n";
+    echo "** Hola ";
+    escribirAmarillo($usuario);
+    echo " Juguemos una PARTIDA de WORDIX! **\n";
+    echo "***************************************************\n";
+}
+
+function palabraElegida()
+ {
+    
+}
+
 /* ... COMPLETAR ... */
 
 
@@ -44,13 +58,24 @@ function cargarColeccionPalabras()
 /*********** PROGRAMA PRINCIPAL *******/
 /**************************************/
 
-//Declaración de variables:
+//DECLARACION DE VARIABLES:
+
+/*
+string $jugador
+
+*/
 
 
-//Inicialización de variables:
+
+//INICIALIZACION DE VARIABLES:
 
 
-//Proceso:
+
+//PROCESO:
+
+echo " Bienvenido! Por favor ingrese su nombre. ";
+$jugador = trim(fgets(STDIN));
+escribirMensajeBienvenida($jugador);
 
 $partida = jugarWordix("MELON", strtolower("MaJo"));
 //print_r($partida);
