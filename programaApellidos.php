@@ -67,9 +67,20 @@ string $jugador
 echo " Bienvenido! Por favor ingrese su nombre. \n";
 $jugador = trim(fgets(STDIN));
 escribirMensajeBienvenida($jugador);
-
-echo"Elija una opcion: \n";
+echo "\n";
+echo "******************************************************** \n";
+echo "*Elija una opcion*\n";
+echo "1) Jugar Wordix con una palabra predeterminada \n";
+echo "2) Jugar Wordix con una palabra aleatoria \n";
+echo "3) Mostrar una partida \n";
+echo "4) Mostrar la primera partida ganadora \n";
+echo "5) Mostrar resumen de un jugador \n";
+echo "6) Mostrar listado de highscore \n";
+echo "7) Agregar una palabra de 5 letras \n";
+echo "8) Salir \n";
+echo "********************************************************";
 $opcionElegida = trim(fgets(STDIN));
+
 
 //print_r($partida);
 //imprimirResultado($partida);
@@ -83,7 +94,9 @@ do {
     
     switch ($opcion) {
         case 1: 
-            //jugar al wordix con una palabra elegida
+            if($opcion == 1){
+                
+            }
 
             break;
         case 2: 
