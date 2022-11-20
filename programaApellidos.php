@@ -64,12 +64,12 @@ string $jugador
 
 //PROCESO:
 
-echo " Bienvenido! Por favor ingrese su nombre. ";
+echo " Bienvenido! Por favor ingrese su nombre. \n";
 $jugador = trim(fgets(STDIN));
 escribirMensajeBienvenida($jugador);
 
 echo"Elija una opcion: \n";
-
+$opcionElegida = trim(fgets(STDIN));
 
 //print_r($partida);
 //imprimirResultado($partida);
