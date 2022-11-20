@@ -89,53 +89,53 @@ $opcionElegida = trim(fgets(STDIN));
 
 
 do {
-    $opcion = $opcionElegida;
+   
 
     
-    switch ($opcion) {
+    switch ($opcionElegida) {
         case 1: 
-            if($opcion == 1){
+            if($opcionElegida == 1){
                 
             }
 
             break;
         case 2: 
-            if($opcion == 2){
+            if($opcionElegida == 2){
                 
             }
             //jugar al wordix con una palabra aleatoria
 
             break;
         case 3: 
-            if($opcion == 3){
+            if($opcionElegida == 3){
                 
             }
             //mostrar una partida
 
             break;
         case 4:
-            if($opcion == 4){
+            if($opcionElegida == 4){
                 
             }
             //mostrar la primera partida ganadora
 
             break;
         case 5: 
-            if($opcion == 5){
+            if($opcionElegida == 5){
                 
             }
             //mostrar resumen de jugador
 
             break;
         case 6:
-            if($opcion == 6){
+            if($opcionElegida == 6){
                 
             }
             //mostrar listado de partidas ordenados por jugador y por palabra
 
             break;
         case 7: 
-            if($opcion == 7){
+            if($opcionElegida == 7){
                 
             }
             //agregar una palabra de 5 letgras a wordix
@@ -146,5 +146,5 @@ do {
 
             break;
 
-  }} while ($opcion != 8);
+  }} while ($opcionElegida != 8);
     
