@@ -150,11 +150,12 @@ function esPalabra($cadena)
 }
 
 /**
- *  ****COMPLETAR*****
+ * verifica si la palabra ingresada contiene 5 letras
+ *@param string $palabra
+ *@return string 
  */
-function leerPalabra5Letras()
+function leerPalabra5Letras($palabra)
 {
-    //string $palabra
     echo "Ingrese una palabra de 5 letras: ";
     $palabra = trim(fgets(STDIN));
     $palabra  = strtoupper($palabra);
