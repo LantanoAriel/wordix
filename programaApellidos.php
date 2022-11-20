@@ -35,18 +35,6 @@ function cargarColeccionPalabras()
 
     return ($coleccionPalabras);
 }
-/**
- * @param string $usuario
- * @return void
- */
-function escribirMensajeBienvenida($usuario)
-{
-    echo "***************************************************\n";
-    echo "** Hola ";
-    escribirAmarillo($usuario);
-    echo " Juguemos una PARTIDA de WORDIX! **\n";
-    echo "***************************************************\n";
-}
 
 function palabraElegida()
  {
@@ -79,6 +67,8 @@ string $jugador
 echo " Bienvenido! Por favor ingrese su nombre. ";
 $jugador = trim(fgets(STDIN));
 escribirMensajeBienvenida($jugador);
+
+echo"Elija una opcion: \n"
 
 $partida = jugarWordix("MELON", strtolower("MaJo"));
 //print_r($partida);
