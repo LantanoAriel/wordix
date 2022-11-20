@@ -70,7 +70,7 @@ escribirMensajeBienvenida($jugador);
 
 echo"Elija una opcion: \n"
 
-$partida = jugarWordix("MELON", strtolower("MaJo"));
+
 //print_r($partida);
 //imprimirResultado($partida);
 
