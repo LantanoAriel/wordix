@@ -100,31 +100,49 @@ do {
 
             break;
         case 2: 
+            if($opcion == 2){
+                
+            }
             //jugar al wordix con una palabra aleatoria
 
             break;
         case 3: 
+            if($opcion == 3){
+                
+            }
             //mostrar una partida
 
             break;
         case 4:
+            if($opcion == 4){
+                
+            }
             //mostrar la primera partida ganadora
 
             break;
         case 5: 
-            //mostar resumen de jugador
+            if($opcion == 5){
+                
+            }
+            //mostrar resumen de jugador
 
             break;
         case 6:
+            if($opcion == 6){
+                
+            }
             //mostrar listado de partidas ordenados por jugador y por palabra
 
             break;
         case 7: 
+            if($opcion == 7){
+                
+            }
             //agregar una palabra de 5 letgras a wordix
 
             break;
         case 8:
-            //salir
+            //Salir
 
             break;
 
