@@ -36,6 +36,10 @@ function cargarColeccionPalabras()
     return ($coleccionPalabras);
 }
 
+/**
+ * @param string
+ * @return void
+ */
 function escribirMensajeBienvenida($usuario)
 {
     echo "***************************************************\n";
@@ -61,8 +65,8 @@ function palabraElegida()
 //DECLARACION DE VARIABLES:
 
 /*
-string $jugador
-
+*string $jugador
+*
 */
 
 
