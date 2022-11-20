@@ -53,7 +53,7 @@ function palabraElegida()
 
 /*
 string $jugador
-
+int $opcionElegida
 */
 
 
