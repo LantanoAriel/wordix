@@ -134,7 +134,9 @@ function escribirMensajeBienvenida($usuario)
 
 
 /**
- * ****COMPLETAR*****
+ * Verifica si la palabra ingresada es una palabra valida
+ * @param string $cadena
+ * @return bool
  */
 function esPalabra($cadena)
 {
