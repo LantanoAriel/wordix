@@ -76,26 +76,44 @@ $opcionElegida = trim(fgets(STDIN));
 
 
 
-/*
+
 do {
-    $opcion = ...;
+    $opcion = $opcionElegida;
 
     
     switch ($opcion) {
         case 1: 
-            //completar qué secuencia de pasos ejecutar si el usuario elige la opción 1
+            //jugar al wordix con una palabra elegida
 
             break;
         case 2: 
-            //completar qué secuencia de pasos ejecutar si el usuario elige la opción 2
+            //jugar al wordix con una palabra aleatoria
 
             break;
         case 3: 
-            //completar qué secuencia de pasos ejecutar si el usuario elige la opción 3
+            //mostrar una partida
 
             break;
-        
-            //...
-    }
-} while ($opcion != X);
-*/
+        case 4:
+            //mostrar la primera partida ganadora
+
+            break;
+        case 5: 
+            //mostar resumen de jugador
+
+            break;
+        case 6:
+            //mostrar listado de partidas ordenados por jugador y por palabra
+
+            break;
+        case 7: 
+            //agregar una palabra de 5 letgras a wordix
+
+            break;
+        case 8:
+            //salir
+
+            break;
+
+  }} while ($opcion != 8);
+    
