@@ -69,7 +69,7 @@ $jugador = trim(fgets(STDIN));
 escribirMensajeBienvenida($jugador);
 
 echo"Elija una opcion: \n";
-
+$opcionElegida = trim(fgets(STDIN));
 
 //print_r($partida);
 //imprimirResultado($partida);
