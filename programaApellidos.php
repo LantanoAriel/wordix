@@ -53,7 +53,8 @@ function palabraElegida()
 
 /*
 string $jugador
-int $opcionElegida
+int $opcionElegida, $numPalabra
+
 */
 
 
@@ -95,7 +96,8 @@ do {
     switch ($opcionElegida) {
         case 1: 
             if($opcionElegida == 1){
-                
+                echo "Ingrese un el número de palabra \n";
+                $numPalabra = trim(fgets(STDIN));
             }
 
             break;
