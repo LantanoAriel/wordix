@@ -35,7 +35,10 @@ function cargarColeccionPalabras()
 
     return ($coleccionPalabras);
 }
-
+/**
+ * @param string $usuario
+ * @return void
+ */
 function escribirMensajeBienvenida($usuario)
 {
     echo "***************************************************\n";
