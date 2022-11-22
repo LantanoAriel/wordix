@@ -41,7 +41,7 @@ function mostrarMenu ($player){
 //DECLARACION DE VARIABLES:
 
 /*
-string $jugador
+string $jugador, $palabraJuego
 int $opcionElegida, $numPalabra, $elMax, $elMin
 
 */
@@ -75,8 +75,11 @@ do {
             if($opcionElegida == 1){
                 $elMax = miMaxInd($miColeccionPalabras);
                 $elMin = miMenInd($elMax);
-                $numPalabra=solicitarNumeroEntre($elMin, $elMax);
-                echo $numPalabra;
+                $numPalabra = solicitarNumeroEntre($elMin, $elMax);
+                //echo $numPalabra; //creo que este echo esta de mas -B
+                $palabraJuego = $miColeccionPalabras[$numPalabra];
+                $resultado = jugarWordix($palabraJuego, $jugador);
+                //hasta acá llega a jugar con la palabra elegida, igual hay un error en la ejecucion y se repite, no sé porqué -B
             }
 
             break;
