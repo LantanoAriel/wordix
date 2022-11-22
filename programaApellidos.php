@@ -90,6 +90,7 @@ do {
                 $palabraAleatoria = $miColeccionPalabras[$aleatoria];
                 $resultado = jugarWordix($palabraAleatoria, $jugador);
                 //llega a jugar con una palabra aleatoria, tiene el mismo error que el caso 1, se repite (y la funcion "mt_rand" la saque de internet) -B
+                //por las dudas no dejé declaradas la variables $conteo, $aleatoria y $resultado -B
             }
             //jugar al wordix con una palabra aleatoria
 
