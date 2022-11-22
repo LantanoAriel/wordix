@@ -85,7 +85,11 @@ do {
             break;
         case 2: 
             if($opcionElegida == 2){
-                
+                $conteo = count($miColeccionPalabras);
+                $aleatoria = mt_rand(0, $conteo - 1);
+                $palabraAleatoria = $miColeccionPalabras[$aleatoria];
+                $resultado = jugarWordix($palabraAleatoria, $jugador);
+                //llega a jugar con una palabra aleatoria, tiene el mismo error que el caso 1, se repite (y la funcion "mt_rand" la saque de internet) -B
             }
             //jugar al wordix con una palabra aleatoria
 
