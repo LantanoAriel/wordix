@@ -49,10 +49,12 @@ int $opcionElegida, $numPalabra, $elMax, $elMin, $nPartida
 
 
 //INICIALIZACION DE VARIABLES:
+$nPartida = 0;
+
 $miColeccionPalabras = [];
 $miColeccionPalabras=cargarColeccionPalabras($miColeccionPalabras);
-
-
+$resumenGlobal = [];
+$partidasGanadas = [];
 //PROCESO:
 
 //print_r($partida);
@@ -99,9 +101,9 @@ do {
             if($opcionElegida == 3){
                 $elMax = miMaxInd($coleccionPartidas);
                 $elMin = miMenInd($elMax);
-                echo "seleccione una partida entre la". $elMin . "y la". $elMax
+                echo "seleccione una partida entre la". $elMin . "y la". $elMax;
                 $nPartida = trim(fgets(STDIN));
-                echo "PARTIDA NÚMERO:". $nPartida
+                echo "PARTIDA NÚMERO:". $nPartida;
                 print_r($coleccionPartidas[$nPartida]);
                 
             }
@@ -110,6 +112,8 @@ do {
             break;
         case 4:
             if($opcionElegida == 4){
+                echo "PRIMERA PARTIDA GANADORA:";
+                print_r($partidasGanadas[0]);
                 
             }
             //mostrar la primera partida ganadora
@@ -117,7 +121,7 @@ do {
             break;
         case 5: 
             if($opcionElegida == 5){
-                echo "escriba el nombre del jugador"
+                echo "escriba el nombre del jugador";
                 $nombreJ = trim(fgets(STDIN));
                 print_r($resumenGlobal[$nombreJ]);
             }
