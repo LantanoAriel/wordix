@@ -41,8 +41,8 @@ function mostrarMenu ($player){
 //DECLARACION DE VARIABLES:
 
 /*
-string $jugador, $palabraJuego
-int $opcionElegida, $numPalabra, $elMax, $elMin
+string $jugador, $palabraJuego, $nombreJ
+int $opcionElegida, $numPalabra, $elMax, $elMin, $nPartida
 
 */
 
@@ -117,7 +117,9 @@ do {
             break;
         case 5: 
             if($opcionElegida == 5){
-                
+                echo "escriba el nombre del jugador"
+                $nombreJ = trim(fgets(STDIN));
+                print_r($resumenGlobal[$nombreJ]);
             }
             //mostrar resumen de jugador
 
