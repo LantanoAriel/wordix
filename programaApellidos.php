@@ -97,6 +97,11 @@ do {
             break;
         case 3: 
             if($opcionElegida == 3){
+                $elMax = miMaxInd($coleccionPartidas);
+                $elMin = miMenInd($elMax);
+                echo "seleccione una partida entre". $elMin . "y". $elMax
+                $n = trim(fgets(STDIN));
+                print_r($coleccionPartidas[$n]);
                 
             }
             //mostrar una partida
