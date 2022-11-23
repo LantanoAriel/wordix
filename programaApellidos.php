@@ -41,7 +41,7 @@ function mostrarMenu ($player){
 //DECLARACION DE VARIABLES:
 
 /*
-string $jugador, $palabraJuego, $nombreJ
+string $jugador, $palabraJuego, $nombreJ, $deNuevo
 int $opcionElegida, $numPalabra, $elMax, $elMin, $nPartida
 
 */
@@ -106,8 +106,8 @@ do {
                 $nPartida = trim(fgets(STDIN));
                 echo "PARTIDA NÚMERO:". $nPartida;
                 print_r($coleccionPartidas[$nPartida]);
-                echo "desea ver otra partida?(s/n)"
-            } while (deNuevo == "si");
+                echo "desea ver otra partida?(s/n)";
+                } while ($deNuevo == "si");
             }
             //mostrar una partida
 
@@ -127,8 +127,8 @@ do {
                 echo "escriba el nombre del jugador";
                 $nombreJ = trim(fgets(STDIN));
                 print_r($resumenGlobal[$nombreJ]);
-                echo "desea ver el resumen de otro jugador?(s/n)"
-            } while (deNuevo == "si");
+                echo "desea ver el resumen de otro jugador?(s/n)";
+                } while ($deNuevo == "si");
             }
             //mostrar resumen de jugador
 
