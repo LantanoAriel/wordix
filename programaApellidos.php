@@ -142,7 +142,12 @@ do {
             break;
         case 7: 
             if($opcionElegida == 7){
-                
+                echo "ingrese la palabra que quiera agregar a wordix:";
+                $nuevaPalabra = trim(fgets(STDIN));
+                $verificaPalabra = esPalabra($nuevaPalabra);
+                if ($verificaPalabra) {
+                    //añadir la palabra al array que aun no estoy seguro como se hace xd
+                }
             }
             //agregar una palabra de 5 letgras a wordix
 
