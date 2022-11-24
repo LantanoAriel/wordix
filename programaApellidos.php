@@ -41,9 +41,9 @@ function mostrarMenu ($player){
 //DECLARACION DE VARIABLES:
 
 /*
-string $jugador, $palabraJuego, $nombreJ, $deNuevo
+string $jugador, $palabraJuego, $nombreJ, $deNuevo, $nuevaPalabra
 int $opcionElegida, $numPalabra, $elMax, $elMin, $nPartida
-
+bool $verificaPalabra
 */
 
 
