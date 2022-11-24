@@ -31,7 +31,7 @@ function mostrarMenu ($player){
     echo "***************************************************** \n";
 }
 
-function palabrasUsadas(){
+function juegosCargados(){
 
     $coleccionPartidas = [
         ["palabra" => "FUEGO", "jugador" => "MAJO", "intentos" => 3, "puntaje" => 10]
@@ -41,6 +41,8 @@ function palabrasUsadas(){
 
 
 }
+
+
 /* ... COMPLETAR ... */
 
 
