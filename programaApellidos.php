@@ -15,9 +15,8 @@ Lantaño, Daniel Ariel. FAI-2305. TUDW. s.lantanoariel@gmail.com. lantanoariel
 /** Muestra el menú para el usuario
  * @param string $player
  */
-function mostrarMenu ($player){
+function mostrarMenu (){
     //$opcionElegida
-    escribirMensajeBienvenida($player);
     echo "\n";
     echo "***************************************************** \n";
     echo "1) Jugar Wordix con una palabra predeterminada \n";
@@ -31,16 +30,7 @@ function mostrarMenu ($player){
     echo "***************************************************** \n";
 }
 
-function juegosCargados(){
 
-    $coleccionPartidas = [
-        ["palabra" => "FUEGO", "jugador" => "MAJO", "intentos" => 3, "puntaje" => 10]
-
-    ]
-
-
-
-}
 
 
 /* ... COMPLETAR ... */
@@ -73,45 +63,42 @@ $partidasGanadas = [];
 //print_r($partida);
 //imprimirResultado($partida);
 
-echo " Bienvenido! Por favor ingrese su nombre. \n";
-$jugador = trim(fgets(STDIN));
-echo mostrarMenu($jugador);
-
-echo "*Elija una opcion*\n";
-
-$opcionElegida = trim(fgets(STDIN));
 
 do {
-   
+    mostrarMenu();
+    echo "Seleccione una de las opciones: \n";
+    $opcionElegida = trim(fgets(STDIN));
 
     
     switch ($opcionElegida) {
         case 1: 
-            if($opcionElegida == 1){
+            echo " Bienvenido! Por favor ingrese su nombre. \n";
+            $jugador = trim(fgets(STDIN));
                 $elMax = miMaxInd($miColeccionPalabras);
                 $elMin = miMenInd($elMax);
                 $numPalabra = solicitarNumeroEntre($elMin, $elMax);
                 //echo $numPalabra; //creo que este echo esta de mas -B
                 $palabraJuego = $miColeccionPalabras[$numPalabra];
                 $resultado = jugarWordix($palabraJuego, $jugador);
+
                 //hasta acá llega a jugar con la palabra elegida, igual hay un error en la ejecucion y se repite, no sé porqué -B
-            }
+            
 
             break;
         case 2: 
-            if($opcionElegida == 2){
+            
                 $conteo = count($miColeccionPalabras);
                 $aleatoria = mt_rand(0, $conteo - 1);
                 $palabraAleatoria = $miColeccionPalabras[$aleatoria];
                 $resultado = jugarWordix($palabraAleatoria, $jugador);
                 //llega a jugar con una palabra aleatoria, tiene el mismo error que el caso 1, se repite (y la funcion "mt_rand" la saque de internet) -B
                 //por las dudas no dejé declaradas la variables $conteo, $aleatoria y $resultado -B
-            }
+            
             //jugar al wordix con una palabra aleatoria
 
             break;
         case 3: 
-            if($opcionElegida == 3){
+            
                 $elMax = miMaxInd($coleccionPartidas);
                 $elMin = miMenInd($elMax);
                 do {
@@ -121,47 +108,47 @@ do {
                 print_r($coleccionPartidas[$nPartida]);
                 echo "desea ver otra partida?(s/n)";
                 } while ($deNuevo == "si");
-            }
+            
             //mostrar una partida
 
             break;
         case 4:
-            if($opcionElegida == 4){
+            
                 echo "PRIMERA PARTIDA GANADORA:";
                 print_r($partidasGanadas[0]);
                 
-            }
+            
             //mostrar la primera partida ganadora
 
             break;
         case 5: 
-            if($opcionElegida == 5){
+            
                 do {
                 echo "escriba el nombre del jugador";
                 $nombreJ = trim(fgets(STDIN));
                 print_r($resumenGlobal[$nombreJ]);
                 echo "desea ver el resumen de otro jugador?(s/n)";
                 } while ($deNuevo == "si");
-            }
+            
             //mostrar resumen de jugador
 
             break;
         case 6:
-            if($opcionElegida == 6){
+            
                 
-            }
+            
             //mostrar listado de partidas ordenados por jugador y por palabra
 
             break;
         case 7: 
-            if($opcionElegida == 7){
+            
                 echo "ingrese la palabra que quiera agregar a wordix:";
                 $nuevaPalabra = trim(fgets(STDIN));
                 $verificaPalabra = esPalabra($nuevaPalabra);
                 if ($verificaPalabra) {
                     //añadir la palabra al array que aun no estoy seguro como se hace xd
                 }
-            }
+            
             //agregar una palabra de 5 letgras a wordix
 
             break;

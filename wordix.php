@@ -381,7 +381,7 @@ function obtenerPuntajeWordix()  /* ****COMPLETAR***** parámetros formales nece
 {
 
     /* ****COMPLETAR***** cuerpo de la función*/
-    return 0;
+    return 20;
 }
 
 /**
