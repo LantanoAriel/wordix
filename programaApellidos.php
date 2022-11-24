@@ -30,6 +30,17 @@ function mostrarMenu ($player){
     echo "8) Salir \n";
     echo "***************************************************** \n";
 }
+
+function palabrasUsadas(){
+
+    $coleccionPartidas = [
+        ["palabra" => "FUEGO", "jugador" => "MAJO", "intentos" => 3, "puntaje" => 10]
+
+    ]
+
+
+
+}
 /* ... COMPLETAR ... */
 
 
