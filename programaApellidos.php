@@ -25,7 +25,7 @@ function mostrarMenu()
     echo "3) Mostrar una partida \n";
     echo "4) Mostrar la primera partida ganadora \n";
     echo "5) Mostrar resumen de un jugador \n";
-    echo "6) Mostrar listado de highscore \n";
+    echo "6) Mostrar listado de partidas ordenadas por jugador y por palabra \n";
     echo "7) Agregar una palabra de 5 letras \n";
     echo "8) Salir \n";
     echo "***************************************************** \n";
@@ -41,14 +41,12 @@ function mostrarDatos($coleccionJuegos, $nIndice){
 /**
  * ordena los arrays alfabeticamente
  * @param array $resumenJugador
- * @param string $highscore
  */
-function ordenarArray($resumenJugador, $highscore)
+function ordenarArray($resumenJugador)
 {
-    usort($resumenJugador, SORT_REGULAR);
-    usort($highscore, SORT_REGULAR);
-    print_r($coleccionPartidas);
-
+    sort($resumenJugador);
+    print_r($resumenJugador);
+    //esto esta mal 
     
 }
 
@@ -184,7 +182,7 @@ do {
             break;
         case 6:
         echo "Listado ordenado de las partidas jugadas";
-        usort($coleccionPartidas, SORT_REGULAR);
+        //completar
         print_r($coleccionPartidas);
 
             //mostrar listado de partidas ordenados por jugador y por palabra
