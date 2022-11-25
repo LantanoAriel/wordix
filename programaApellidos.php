@@ -38,17 +38,52 @@ function mostrarDatos($coleccionJuegos, $nIndice){
 }
 
 
-/**
- * ordena los arrays alfabeticamente
- * @param array $resumenJugador
- */
-function ordenarArray($resumenJugador)
+function comparar($a, $b) //esta funcion nos permitira realizar la comparacion para $coleccionPalabras
 {
-    sort($resumenJugador);
-    print_r($resumenJugador);
-    //esto esta mal 
-    
+if($a["jugador"] == $b["jugador"]) {
+   $orden=0;
 }
+elseif ($a["jugador"] < $b["jugador"]) {
+    $orden=-1;
+ }
+ else {
+    $orden=1;
+ }
+ 
+return $orden;
+}
+//Esta funcion es llamada dentro de la funcion ordenarArray para la opcion 6 del menu -M
+
+
+function comparar2($a, $b) //esta funcion nos permitira realizar la comparacion para $coleccionPalabras
+{
+if($a["palabraWordix"] == $b["palabraWordix"]) {
+   $orden=0;
+}
+elseif ($a["palabraWordix"] < $b["palabraWordix"]) {
+    $orden=-1;
+ }
+ else {
+    $orden=1;
+ }
+ 
+ //Esta funcion tambien es llamada dentro de la funcion ordenarArray para la opcion 6 del menu -M
+return $orden;
+}
+
+
+ /**
+ * funcion para ordenar la coleccion de partidas
+ * @param array $sinOrdenar
+ */
+function ordenarArray($sinOrdenar)
+{
+uasort($sinOrdenar, "comparar2");
+uasort($sinOrdenar, "comparar");
+print_r($sinOrdenar);
+}  
+//esta es la funcion sin retorno que se nos pedia en el inciso para la opcion 6 del menu -M
+
 
 
 /* ... COMPLETAR ... */
@@ -182,10 +217,10 @@ do {
             break;
         case 6:
         echo "Listado ordenado de las partidas jugadas";
-        //completar
-        print_r($coleccionPartidas);
+        ordenarArray($coleccionPartidas);
 
             //mostrar listado de partidas ordenados por jugador y por palabra
+            //aca llame la funcion que hice arriba xd -M
 
             break;
         case 7:
