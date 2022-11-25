@@ -38,6 +38,19 @@ function mostrarDatos($coleccionJuegos, $nIndice){
 }
 
 
+/**
+ * ordena los arrays alfabeticamente
+ * @param array $resumenJugador
+ * @param string $highscore
+ */
+function ordenarArray($resumenJugador, $highscore)
+{
+    usort($resumenJugador, SORT_REGULAR);
+    usort($highscore, SORT_REGULAR);
+    print_r($coleccionPartidas);
+
+    
+}
 
 
 /* ... COMPLETAR ... */
@@ -170,8 +183,9 @@ do {
 
             break;
         case 6:
-
-
+        echo "Listado ordenado de las partidas jugadas";
+        usort($coleccionPartidas, SORT_REGULAR);
+        print_r($coleccionPartidas);
 
             //mostrar listado de partidas ordenados por jugador y por palabra
 
