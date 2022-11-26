@@ -86,6 +86,29 @@ print_r($sinOrdenar);
 
 
 
+/** 
+* solicita un nombre de jugador y lo convierte en minusculas
+* @return string 
+*/
+function solicitarJugador (){
+// string $nombreJugador, $primero, minusculas //
+echo "ingrese un nombre de jugador:";
+$nombreJugador = trim(fgets(STDIN));
+$primero = $nombreJugador[0];
+while ($primero >=0 && $primero  <= 9) {
+    echo "el primer caracter del nombre debe ser una letra. \n"; 
+    echo "ingrese un nombre de jugador:";
+    $nombreJugador = trim(fgets(STDIN));
+    $primero = $nombreJugador[0];
+}
+$jugador = strtolower($nombreJugador);
+echo "nombre:".$jugador;
+    
+
+return $jugador;
+}
+//esta funcion la puse en la opcion 1 y 2 del menu -M
+
 /* ... COMPLETAR ... */
 
 
@@ -128,8 +151,8 @@ do {
 
     switch ($opcionElegida) {
         case 1:
-            echo " Bienvenido! Por favor ingrese su nombre. \n";
-            $jugador = trim(fgets(STDIN));
+            echo " Bienvenido! \n";
+            solicitarJugador();
             $elMax = miMaxInd($miColeccionPalabras);
             $elMin = miMenInd($elMax);
             $numPalabra = solicitarNumeroEntre($elMin, $elMax);
@@ -144,8 +167,8 @@ do {
 
             break;
         case 2:
-            echo " Bienvenido! Por favor ingrese su nombre. \n";
-            $jugador = trim(fgets(STDIN));
+            echo " Bienvenido! \n";
+            solicitarJugador();
             $conteo = count($miColeccionPalabras);
             $aleatoria = mt_rand(0, $conteo - 1);
             $palabraAleatoria = $miColeccionPalabras[$aleatoria];
