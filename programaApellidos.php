@@ -109,8 +109,33 @@ return $jugador;
 }
 //esta funcion la puse en la opcion 1 y 2 del menu -M
 
-/* ... COMPLETAR ... */
 
+
+/** 
+* solicita un nombre de jugador y muestra el resumen de sus partidas
+* @param array $arrayResumen
+* @param string $nombreJ
+* @return string 
+*/
+function resumenJugadores ($arrayResumen, $nombreJ){
+    //string $resumen//
+    
+    echo "\n";
+    $key = array_search("$nombreJ", array_column($arrayResumen, 'jugador'));
+    if ($arrayResumen[$key]["jugador"]==$nombreJ) {
+       
+       $resumen = print_r($arrayResumen[$key]);
+    } else {
+       $resumen = "\n el jugador ingresado aun no jugo una partida";
+   }
+   return $resumen;
+   }
+   
+   //esta funcion la realize para la opcion 5 del menu :) -M
+   
+
+/* ... COMPLETAR ... */
+ 
 
 
 /**************************************/
@@ -228,14 +253,13 @@ do {
             break;
         case 5:
 
-            do {
-                echo "escriba el nombre del jugador";
-                $nombreJ = trim(fgets(STDIN));
-                print_r($resumenGlobal[$nombreJ]);
-                echo "desea ver el resumen de otro jugador?(s/n)";
-            } while ($deNuevo == "si");
+            
+            $usuario = solicitarJugador();
+            resumenJugadores($resumenGlobal, $usuario);
+                
+            
 
-            //mostrar resumen de jugador
+            //mostrar resumen de jugador -M
 
             break;
         case 6:
