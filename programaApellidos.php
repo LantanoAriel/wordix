@@ -244,7 +244,7 @@ do {
             $elMax = miMaxInd($miColeccionPalabras);
             $elMin = miMenInd($elMax);
             $numPalabra = solicitarNumeroEntre($elMin, $elMax);
-            $palabraJuego = $miColeccionPalabras[($numPalabra)-1];
+            $palabraJuego = $miColeccionPalabras[$numPalabra];
             $coleccionPartidas[$i] = jugarWordix($palabraJuego, $jugador);
             $i++;
           
@@ -275,11 +275,11 @@ do {
 
             break;
         case 3:
-            //$elMax = miMaxInd($coleccionPartidas);
-            //$elMin = miMenInd($elMax);
+             $elMax = miMaxInd($coleccionPartidas);
+             $elMin = miMenInd($elMax);
 
-           // echo "seleccione una partida entre la partida numero " . $elMin . " y la numero " . $elMax;
-           echo "ingrese: ";
+            echo "seleccione una partida entre la partida numero " . $elMin . " y la numero " . $elMax;
+            
             $indice = trim(fgets(STDIN));
             $indice--;
             if ($indice >= 0 && $indice < count($coleccionPartidas)) {
