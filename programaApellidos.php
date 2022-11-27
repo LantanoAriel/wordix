@@ -296,7 +296,7 @@ do {
             if ($indiceGanada != -1) {
                 mostrarDatos($coleccionPartidas[$indiceGanada], $indiceGanada);
             }
-            if(!$existeJugador){
+            if(!$esJugador){
                 echo "\n El jugador " .$usuario. " no existe.\n";
             }
             if($indiceGanada == -1 && $esJugador) {
