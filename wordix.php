@@ -395,14 +395,42 @@ function esIntentoGanado($estructuraPalabraIntento)
 }
 
 /**
- * ****COMPLETAR***** documentación de la intefaz
+ * obtiene el puntaje de una partida segun la cantidad de palabras y los intentos
+ * @param int $nroIntento
+ * @param string $palabraWordix
+ * @return int
  */
-function obtenerPuntajeWordix()  /* ****COMPLETAR***** parámetros formales necesarios */
+function obtenerPuntajeWordix($palabraWordix, $nroIntento )  /* ****COMPLETAR***** parámetros formales necesarios */
 {
-
-    /* ****COMPLETAR***** cuerpo de la función*/
-    return 20;
-}
+    /*int $resultado, $i*/
+    
+    if ($nroIntento == 1){
+        $resultado = 6;
+    } elseif ($nroIntento == 2){
+        $resultado = 5;
+    } elseif ($nroIntento == 3){
+        $resultado = 4;
+    } elseif ($nroIntento == 4){
+        $resultado = 3;
+    } elseif ($nroIntento == 5){
+        $resultado = 2;
+    } elseif ($nroIntento == 6){
+        $resultado = 1;
+    } else {
+        $resultado = 0;
+    }
+    for ($i = 0; $i < 5; $i++){
+        if ($palabraWordix[$i] <= "m" && $palabraWordix[$i] != "a" && $palabraWordix[$i] != "e" && $palabraWordix[$i] != "i" && $palabraWordix[$i] != "o" && $palabraWordix[$i] != "u"){
+                $resultado = $resultado + 2;
+        } elseif ($palabraWordix[$i] > "m" && $palabraWordix[$i] != "a" && $palabraWordix[$i] != "e" && $palabraWordix[$i] != "i" && $palabraWordix[$i] != "o" && $palabraWordix[$i] != "u"){
+                $resultado = $resultado + 3;
+        } else {
+                $resultado = $resultado + 1;
+        }
+    }
+    
+    return $resultado;
+} //ATENTOS al probarlo en el programa da un error, pero si se prueba por separado funciona, hay que revisar eso -B
 
 /**
  * Dada una palabra para adivinar, juega una partida de wordix intentando que el usuario adivine la palabra.
