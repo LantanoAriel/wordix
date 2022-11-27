@@ -34,8 +34,8 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
   * @return array 
  */
 function cargarColeccionPartidas(){
-    $collecPart = [];
-    $collecPart =[
+    $coleccionPartidas = [];
+    $coleccionPartidas =[
         ["palabraWordix" => "FUEGO","jugador" => "lilmauro","intentos" => "3","puntaje" => "4"],
         ["palabraWordix" => "QUESO","jugador" => "brunardo","intentos" => "4","puntaje" => "5"],
         ["palabraWordix" => "CASAS","jugador" => "ariel","intentos" => "5","puntaje" => "2"],
@@ -47,7 +47,7 @@ function cargarColeccionPartidas(){
         ["palabraWordix" => "CLAVE","jugador" => "ivanovsky","intentos" => "1","puntaje" => "20"],
         ["palabraWordix" => "LUCES","jugador" => "joma","intentos" => "4","puntaje" => "12"]
      ];
-    return ($collecPart);
+    return ($coleccionPartidas);
 }
 
 
@@ -464,7 +464,7 @@ function jugarWordix($palabraWordix, $nombreUsuario)
 
     if ($ganoElIntento) {
         $nroIntento--;
-        $puntaje = obtenerPuntajeWordix();
+        $puntaje = obtenerPuntajeWordix($palabraWordix, $nroIntento);
         echo "Adivinó la palabra Wordix en el intento " . $nroIntento . "!: " . $palabraIntento . " Obtuvo $puntaje puntos!";
     } else {
         $nroIntento = 0; //reset intento

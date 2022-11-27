@@ -160,7 +160,7 @@ $coleccionPartidas = [];
 $miColeccionPalabras = cargarColeccionPalabras($miColeccionPalabras);
 $coleccionPartidas = cargarColeccionPartidas($coleccionPartidas);
 $partidasGanadas = [];
-$i = 0;
+$i = 10;
 
 //PROCESO:
 
@@ -200,7 +200,7 @@ do {
             $palabraAleatoria = $miColeccionPalabras[$aleatoria];
             $coleccionPartidas[$i] = jugarWordix($palabraAleatoria, $jugador);
             $i++;
-            print_r($coleccionPartidas); //Esto es para que vean los datos de la partida -Ariel
+           
             
             //llega a jugar con una palabra aleatoria, tiene el mismo error que el caso 1, se repite (y la funcion "mt_rand" la saque de internet) -B
             //por las dudas no dejé declaradas la variables $conteo, $aleatoria y $resultado -BRUUUNO
