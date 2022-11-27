@@ -107,7 +107,7 @@ while ($primero >=0 && $primero  <= 9) {
     $primero = $nombreJugador[0];
 }
 $jugador = strtolower($nombreJugador);
-    
+
 return $jugador;
 }
 //esta funcion la puse en la opcion 1 y 2 del menu -M
@@ -178,7 +178,7 @@ function esJugador($coleccionJugadores, $player){
 }
 
 /* ... COMPLETAR ... */
- 
+
 
 
 /**************************************/
@@ -188,10 +188,16 @@ function esJugador($coleccionJugadores, $player){
 //DECLARACION DE VARIABLES:
 
 /*
+<<<<<<< HEAD
+string $jugador, $palabraJuego, $nombreJ, $deNuevo, $nuevaPalabra
+int $opcionElegida, $numPalabra, $elMax, $elMin, $nPartida, $conteo, $aleatoria
+bool $verificaPalabra
+=======
 *string $jugador, $palabraJuego, $nombreJ, $deNuevo, $nuevaPalabra
 *int $opcionElegida, $numPalabra, $elMax, $elMin, $nPartida
 *bool $verificaPalabra
 *
+>>>>>>> d140536f4b86c8ab4ae350f70f394e38e51704c7
 */
 
 
@@ -309,13 +315,14 @@ do {
             break;
         case 5:
 
-            
-            $usuario = solicitarJugador();
-            resumenJugadores($resumenGlobal, $usuario);
-                
-            
+            do {
+                echo "escriba el nombre del jugador";
+                $nombreJ = trim(fgets(STDIN));
+                print_r($resumenGlobal[$nombreJ]);
+                echo "desea ver el resumen de otro jugador?(s/n)";
+            } while ($deNuevo == "si");
 
-            //mostrar resumen de jugador -M
+            //mostrar resumen de jugador
 
             break;
         case 6:
