@@ -396,7 +396,10 @@ function obtenerPuntajeWordix($palabraWordix, $nroIntento )  /* ****COMPLETAR***
         $resultado = 2;
     } elseif ($nroIntento == 6){
         $resultado = 1;
+    } else {
+        $resultado = 0;
     }
+    
     /* ****COMPLETAR***** cuerpo de la función*/
     return $resultado;
 }
