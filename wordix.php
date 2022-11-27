@@ -399,7 +399,15 @@ function obtenerPuntajeWordix($palabraWordix, $nroIntento )  /* ****COMPLETAR***
     } else {
         $resultado = 0;
     }
-    
+    for($i = 0; $i < 5; $i++){
+        if ($palabraWordix[$i] <= "m" && $palabraWordix[$i] != "a" && $palabraWordix[$i] != "e" && $palabraWordix[$i] != "i" && $palabraWordix[$i] != "o" && $palabraWordix[$i] != "u"){
+                $resultado = $resultado + 2;
+        } elseif ($palabraWordix[$i] > "m" && $palabraWordix[$i] != "a" && $palabraWordix[$i] != "e" && $palabraWordix[$i] != "i" && $palabraWordix[$i] != "o" && $palabraWordix[$i] != "u"){
+                $resultado = $resultado + 3;
+        } else {
+                $resultado = $resultado + 1;
+        }
+    }
     /* ****COMPLETAR***** cuerpo de la función*/
     return $resultado;
 }
