@@ -31,6 +31,11 @@ function mostrarMenu()
     echo "***************************************************** \n";
 }
 
+/** Muestra los datos de la partida jugada
+ * @param array $coleccionJuegos
+ * @param int $nIndice
+ * @return void 
+ */
 function mostrarDatos($coleccionJuegos, $nIndice){
     $datoPartida = $coleccionJuegos[$nIndice];
     $nIndice  = ++$nIndice;
