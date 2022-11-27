@@ -137,6 +137,45 @@ function resumenJugadores ($arrayResumen, $nombreJ){
    
    //esta funcion la realize para la opcion 5 del menu :) -M
    
+   /**
+ * Dado un jugador, retorna el índice de su primera partida ganada guardada en el arreglo. Sino retorna -1
+ * @param string $usuarioJ
+ * @param array $partidasJugadas
+ * @param int $indice
+ * @return int $numPartida
+ */
+function primerPartidaGanada ($usuarioJ, $partidasJugadas, $numPartida) {
+    //int $i, $indice//
+    $indice = -1;
+    $i = 0;
+    while ($i<$numPartida && ($usuarioJ != $partidasJugadas[$i]["jugador"] || $partidasJugadas[$i]["puntaje"] == 0)) {
+        $i++;
+    }
+    if ($i<$numPartida) {
+        $indice = $i;
+    } 
+    return $indice;
+}
+
+/**
+ * Verifica si el usuario ingresado esta presente en coleccion de partidas
+ * @param array $coleccionJugadores
+ * @param string $player
+ * @return boolean
+ */
+function esJugador($coleccionJugadores, $player){
+    $i = 0;
+    $esJugador = false;
+    $elMax = miMaxInd($coleccionJugadores);
+    while($i < $elMax && $coleccionJugadores[$i]["jugador"]!= $player){
+        $i = $i + 1;
+     }
+     if ($coleccionJugadores[$i]["jugador"] == $player){
+        $existeJugador = true;
+     }
+     
+     return $esJugador;
+}
 
 /* ... COMPLETAR ... */
  
@@ -249,12 +288,22 @@ do {
 
             break;
         case 4:
-            solicitarJugador();
-            
+            $usuario=solicitarJugador();
+            $elMax = miMaxInd($miColeccionPalabras);
             echo "PRIMERA PARTIDA GANADORA:";
-            print_r($partidasGanadas[0]);
+            $indiceGanada=primerPartidaGanada ($usuario, $coleccionPartidas, $elMax);
+            $esJugador=esJugador($coleccionPalabras, $usuario);
 
-
+            if ($indiceGanada != -1) {
+                mostrarDatos($coleccionPartidas[$indiceGanada], $indiceGanada);
+            }
+            if(!$existeJugador){
+                echo "\n El jugador " .$usuario. " no existe.\n";
+            }
+            if($indiceGanada == -1 && $esJugador) {
+                echo "\n El jugador " .$usuario. " no ganó ninguna partida.\n";
+                }
+            
             //mostrar la primera partida ganadora
 
             break;
