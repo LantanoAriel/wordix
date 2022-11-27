@@ -375,13 +375,30 @@ function esIntentoGanado($estructuraPalabraIntento)
 }
 
 /**
- * ****COMPLETAR***** documentación de la intefaz
+ * obtiene el puntaje de una partida segun la cantidad de palabras y los intentos
+ * @param int $nroIntento
+ * @param string $palabraWordix
+ * @return int
  */
-function obtenerPuntajeWordix()  /* ****COMPLETAR***** parámetros formales necesarios */
+function obtenerPuntajeWordix($palabraWordix, $nroIntento )  /* ****COMPLETAR***** parámetros formales necesarios */
 {
-
+    /*int $resultado*/
+    
+    if ($nroIntento == 1){
+        $resultado = 6;
+    } elseif ($nroIntento == 2){
+        $resultado = 5;
+    } elseif ($nroIntento == 3){
+        $resultado = 4;
+    } elseif ($nroIntento == 4){
+        $resultado = 3;
+    } elseif ($nroIntento == 5){
+        $resultado = 2;
+    } elseif ($nroIntento == 6){
+        $resultado = 1;
+    }
     /* ****COMPLETAR***** cuerpo de la función*/
-    return 20;
+    return $resultado;
 }
 
 /**
