@@ -221,9 +221,9 @@ $nPartida = 0;
 $miColeccionPalabras = [];
 $coleccionPartidas = [];
 $miColeccionPalabras = cargarColeccionPalabras($miColeccionPalabras);
-$coleccionPartidas = cargarColeccionPartidas($coleccionPartidas);
+$coleccionPartidas = [];
 $partidasGanadas = [];
-$i = 10;
+$i = 0;
 
 //PROCESO:
 
@@ -375,5 +375,7 @@ do {
             //Salir
 
             break;
+            default:
+            echo "Ingrese un numero valido entre el 1 y el 8";
     }
 } while ($opcionElegida != 8);
