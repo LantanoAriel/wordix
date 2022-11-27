@@ -291,12 +291,12 @@ do {
             $elMax = miMaxInd($miColeccionPalabras);
             echo "PRIMERA PARTIDA GANADORA:";
             $indiceGanada=primerPartidaGanada ($usuario, $coleccionPartidas, $elMax);
-            $esJugador=esJugador($coleccionPalabras, $usuario);
+            $esJugador=esJugador($coleccionPartidas, $usuario);
 
             if ($indiceGanada != -1) {
                 mostrarDatos($coleccionPartidas[$indiceGanada], $indiceGanada);
             }
-            if(!$existeJugador){
+            if(!$esJugador){
                 echo "\n El jugador " .$usuario. " no existe.\n";
             }
             if($indiceGanada == -1 && $esJugador) {
