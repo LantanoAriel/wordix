@@ -34,7 +34,7 @@ function mostrarMenu()
 function mostrarDatos($coleccionJuegos, $nIndice){
     $datoPartida = $coleccionJuegos[$nIndice];
     $nIndice  = ++$nIndice;
-    echo "Datos de la partida: " . $datoPartida["jugador"] . $datoPartida["palabraWordix"] . $datoPartida["puntaje"] . $datoPartida["intentos"];
+    echo "Datos de la partida: \n" . "Nombre: " . $datoPartida["jugador"]. "\n" . "Palabra: " . $datoPartida["palabraWordix"] ."\n". "Puntaje: " . $datoPartida["puntaje"] . "\n". "Cantidad de intentos: " . $datoPartida["intentos"];
 }
 
 
@@ -102,9 +102,7 @@ while ($primero >=0 && $primero  <= 9) {
     $primero = $nombreJugador[0];
 }
 $jugador = strtolower($nombreJugador);
-echo "nombre:".$jugador;
     
-
 return $jugador;
 }
 //esta funcion la puse en la opcion 1 y 2 del menu -M
@@ -158,10 +156,10 @@ function resumenJugadores ($arrayResumen, $nombreJ){
 $nPartida = 0;
 
 $miColeccionPalabras = [];
-$miColeccionPalabras = cargarColeccionPalabras($miColeccionPalabras);
-$resumenGlobal = [];
-$partidasGanadas = [];
 $coleccionPartidas = [];
+$miColeccionPalabras = cargarColeccionPalabras($miColeccionPalabras);
+$coleccionPartidas = cargarColeccionPartidas($coleccionPartidas);
+$partidasGanadas = [];
 $i = 0;
 
 //PROCESO:
@@ -196,7 +194,7 @@ do {
             break;
         case 2:
             echo " Bienvenido! \n";
-            solicitarJugador();
+            $jugador=solicitarJugador();
             $conteo = count($miColeccionPalabras);
             $aleatoria = mt_rand(0, $conteo - 1);
             $palabraAleatoria = $miColeccionPalabras[$aleatoria];
