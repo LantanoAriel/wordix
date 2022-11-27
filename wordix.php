@@ -30,6 +30,26 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
  *  ****COMPLETAR*****
  */
 
+ /** Obtiene una coleccion de partidas
+  * @return array 
+ */
+function cargarColeccionPartidas(){
+    $coleccionPartidas = [];
+    $coleccionPartidas =[
+        ["palabraWordix" => "FUEGO","jugador" => "lilmauro","intentos" => "3","puntaje" => "4"],
+        ["palabraWordix" => "QUESO","jugador" => "brunardo","intentos" => "4","puntaje" => "5"],
+        ["palabraWordix" => "CASAS","jugador" => "ariel","intentos" => "5","puntaje" => "2"],
+        ["palabraWordix" => "PLAZA","jugador" => "fabro","intentos" => "1","puntaje" => "17"],
+        ["palabraWordix" => "PERRO","jugador" => "fronchi","intentos" => "2","puntaje" => "15"],
+        ["palabraWordix" => "GOTAS","jugador" => "ariana","intentos" => "6","puntaje" => "7"],
+        ["palabraWordix" => "TINTO","jugador" => "santaclau","intentos" => "2","puntaje" => "16"],
+        ["palabraWordix" => "YUYOS","jugador" => "cristeanus","intentos" => "5","puntaje" => "11"],
+        ["palabraWordix" => "CLAVE","jugador" => "ivanovsky","intentos" => "1","puntaje" => "20"],
+        ["palabraWordix" => "LUCES","jugador" => "joma","intentos" => "4","puntaje" => "12"]
+     ];
+    return ($coleccionPartidas);
+}
+
 
 /**
  * Obtiene una colección de palabras
@@ -444,7 +464,7 @@ function jugarWordix($palabraWordix, $nombreUsuario)
 
     if ($ganoElIntento) {
         $nroIntento--;
-        $puntaje = obtenerPuntajeWordix();
+        $puntaje = obtenerPuntajeWordix($palabraWordix, $nroIntento);
         echo "Adivinó la palabra Wordix en el intento " . $nroIntento . "!: " . $palabraIntento . " Obtuvo $puntaje puntos!";
     } else {
         $nroIntento = 0; //reset intento

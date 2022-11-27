@@ -34,7 +34,7 @@ function mostrarMenu()
 function mostrarDatos($coleccionJuegos, $nIndice){
     $datoPartida = $coleccionJuegos[$nIndice];
     $nIndice  = ++$nIndice;
-    echo "Datos de la partida: " . $datoPartida["jugador"] . $datoPartida["palabraWordix"] . $datoPartida["puntaje"] . $datoPartida["intentos"];
+    echo "Datos de la partida: \n" . "Nombre: " . $datoPartida["jugador"]. "\n" . "Palabra: " . $datoPartida["palabraWordix"] ."\n". "Puntaje: " . $datoPartida["puntaje"] . "\n". "Cantidad de intentos: " . $datoPartida["intentos"];
 }
 
 
@@ -102,8 +102,6 @@ while ($primero >=0 && $primero  <= 9) {
     $primero = $nombreJugador[0];
 }
 $jugador = strtolower($nombreJugador);
-echo "nombre:".$jugador;
-    
 
 return $jugador;
 }
@@ -146,9 +144,16 @@ function resumenJugadores ($arrayResumen, $nombreJ){
 //DECLARACION DE VARIABLES:
 
 /*
+<<<<<<< HEAD
 string $jugador, $palabraJuego, $nombreJ, $deNuevo, $nuevaPalabra
 int $opcionElegida, $numPalabra, $elMax, $elMin, $nPartida, $conteo, $aleatoria
 bool $verificaPalabra
+=======
+*string $jugador, $palabraJuego, $nombreJ, $deNuevo, $nuevaPalabra
+*int $opcionElegida, $numPalabra, $elMax, $elMin, $nPartida
+*bool $verificaPalabra
+*
+>>>>>>> d140536f4b86c8ab4ae350f70f394e38e51704c7
 */
 
 
@@ -157,11 +162,11 @@ bool $verificaPalabra
 $nPartida = 0;
 
 $miColeccionPalabras = [];
-$miColeccionPalabras = cargarColeccionPalabras($miColeccionPalabras);
-$resumenGlobal = [];
-$partidasGanadas = [];
 $coleccionPartidas = [];
-$i = 0;
+$miColeccionPalabras = cargarColeccionPalabras($miColeccionPalabras);
+$coleccionPartidas = cargarColeccionPartidas($coleccionPartidas);
+$partidasGanadas = [];
+$i = 10;
 
 //PROCESO:
 
@@ -178,13 +183,14 @@ do {
     switch ($opcionElegida) {
         case 1:
             echo " Bienvenido! \n";
-            solicitarJugador();
+            $jugador=solicitarJugador();
             $elMax = miMaxInd($miColeccionPalabras);
             $elMin = miMenInd($elMax);
             $numPalabra = solicitarNumeroEntre($elMin, $elMax);
             $palabraJuego = $miColeccionPalabras[$numPalabra];
             $coleccionPartidas[$i] = jugarWordix($palabraJuego, $jugador);
             $i++;
+          
 
 
             //Aca ya te arreglé las cosas con los problemas que te repetian. -Ariel 
@@ -194,13 +200,13 @@ do {
             break;
         case 2:
             echo " Bienvenido! \n";
-            solicitarJugador();
+            $jugador=solicitarJugador();
             $conteo = count($miColeccionPalabras);
             $aleatoria = mt_rand(0, $conteo - 1);
             $palabraAleatoria = $miColeccionPalabras[$aleatoria];
             $coleccionPartidas[$i] = jugarWordix($palabraAleatoria, $jugador);
             $i++;
-            print_r($coleccionPartidas); //Esto es para que vean los datos de la partida -Ariel
+           
             
             //llega a jugar con una palabra aleatoria, tiene el mismo error que el caso 1, se repite (y la funcion "mt_rand" la saque de internet) -B
             //por las dudas no dejé declaradas la variables $conteo, $aleatoria y $resultado -BRUUUNO
@@ -237,14 +243,15 @@ do {
                 $deNuevo = trim(fgets(STDIN));
                 strtoupper($deNuevo);
             } while ($deNuevo == "SI");
-*/
+            */
             //mostrar una partida  
 
             //NO PRESTEN MUCHA ATENCION A ESTO, ESTOY PROBANDO COSAS Y POR AHORA VA RE BIEN LA 3. -ARIEL
 
             break;
         case 4:
-
+            solicitarJugador();
+            
             echo "PRIMERA PARTIDA GANADORA:";
             print_r($partidasGanadas[0]);
 
