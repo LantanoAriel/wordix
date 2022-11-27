@@ -149,16 +149,9 @@ function resumenJugadores ($arrayResumen, $nombreJ){
 //DECLARACION DE VARIABLES:
 
 /*
-<<<<<<< HEAD
 string $jugador, $palabraJuego, $nombreJ, $deNuevo, $nuevaPalabra
 int $opcionElegida, $numPalabra, $elMax, $elMin, $nPartida, $conteo, $aleatoria
 bool $verificaPalabra
-=======
-*string $jugador, $palabraJuego, $nombreJ, $deNuevo, $nuevaPalabra
-*int $opcionElegida, $numPalabra, $elMax, $elMin, $nPartida
-*bool $verificaPalabra
-*
->>>>>>> d140536f4b86c8ab4ae350f70f394e38e51704c7
 */
 
 
