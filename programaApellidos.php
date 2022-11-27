@@ -136,7 +136,7 @@ function resumenJugadores ($arrayResumen, $nombreJ){
    
 
 /* ... COMPLETAR ... */
- 
+
 
 
 /**************************************/
@@ -147,7 +147,7 @@ function resumenJugadores ($arrayResumen, $nombreJ){
 
 /*
 string $jugador, $palabraJuego, $nombreJ, $deNuevo, $nuevaPalabra
-int $opcionElegida, $numPalabra, $elMax, $elMin, $nPartida
+int $opcionElegida, $numPalabra, $elMax, $elMin, $nPartida, $conteo, $aleatoria
 bool $verificaPalabra
 */
 
@@ -254,13 +254,14 @@ do {
             break;
         case 5:
 
-            
-            $usuario = solicitarJugador();
-            resumenJugadores($resumenGlobal, $usuario);
-                
-            
+            do {
+                echo "escriba el nombre del jugador";
+                $nombreJ = trim(fgets(STDIN));
+                print_r($resumenGlobal[$nombreJ]);
+                echo "desea ver el resumen de otro jugador?(s/n)";
+            } while ($deNuevo == "si");
 
-            //mostrar resumen de jugador -M
+            //mostrar resumen de jugador
 
             break;
         case 6:
