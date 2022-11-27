@@ -127,6 +127,7 @@ function resumenJugadores ($arrayResumen, $nombreJ){
        $resumen = print_r($arrayResumen[$key]);
     } else {
        $resumen = "\n el jugador ingresado aun no jugo una partida";
+       echo $resumen;
    }
    return $resumen;
    }
