@@ -89,6 +89,26 @@ print_r($sinOrdenar);
 }  
 //esta es la funcion sin retorno que se nos pedia en el inciso para la opcion 6 del menu -M
 
+/** Muestra una partida guardada 
+ * @param array $unaPartida
+ * @param int $numPartida
+ * @return void
+ */
+function muestraUnaPar($unaPartida, $numPartida){
+    echo "\n"; 
+    echo " Partida WORDIX ". $numPartida . ": Palabra ". $unaPartida["palabraWordix"]."\n";
+    echo " Puntaje: ". $unaPartida["puntaje"]."\n";
+    echo " Jugador: ". $unaPartida["jugador"]."\n";
+    if($unaPartida["puntaje"]==0){
+        echo " intentos: no adivino la palabra\n";
+    }else{
+        echo " intentos: ". $unaPartida["intentos"]."\n";
+    }
+    echo "*****************************************\n";
+    echo " ***************************************\n";
+    echo "\n";
+    }
+
 
 
 /** 
@@ -171,7 +191,7 @@ function esJugador($coleccionJugadores, $player){
         $i = $i + 1;
      }
      if ($coleccionJugadores[$i]["jugador"] == $player){
-        $existeJugador = true;
+        $esJugador = true;
      }
      
      return $esJugador;
@@ -224,7 +244,7 @@ do {
             $elMax = miMaxInd($miColeccionPalabras);
             $elMin = miMenInd($elMax);
             $numPalabra = solicitarNumeroEntre($elMin, $elMax);
-            $palabraJuego = $miColeccionPalabras[$numPalabra];
+            $palabraJuego = $miColeccionPalabras[($numPalabra)-1];
             $coleccionPartidas[$i] = jugarWordix($palabraJuego, $jugador);
             $i++;
           
@@ -289,14 +309,17 @@ do {
         case 4:
             $usuario=solicitarJugador();
             $elMax = miMaxInd($miColeccionPalabras);
-            echo "PRIMERA PARTIDA GANADORA:";
+            echo " ***********************************\n";
+            echo "      PRIMERA PARTIDA GANADORA:\n";
+            echo "*************************************";
+
             $indiceGanada=primerPartidaGanada ($usuario, $coleccionPartidas, $elMax);
-            $esJugador=esJugador($coleccionPalabras, $usuario);
+            $esJugador=esJugador($coleccionPartidas, $usuario);
 
             if ($indiceGanada != -1) {
-                mostrarDatos($coleccionPartidas[$indiceGanada], $indiceGanada);
+                muestraUnaPar($coleccionPartidas[$indiceGanada], $indiceGanada);
             }
-            if(!$existeJugador){
+            if(!$esJugador){
                 echo "\n El jugador " .$usuario. " no existe.\n";
             }
             if($indiceGanada == -1 && $esJugador) {
