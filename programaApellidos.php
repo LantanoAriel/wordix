@@ -146,9 +146,10 @@ function resumenJugadores ($arrayResumen, $nombreJ){
 //DECLARACION DE VARIABLES:
 
 /*
-string $jugador, $palabraJuego, $nombreJ, $deNuevo, $nuevaPalabra
-int $opcionElegida, $numPalabra, $elMax, $elMin, $nPartida
-bool $verificaPalabra
+*string $jugador, $palabraJuego, $nombreJ, $deNuevo, $nuevaPalabra
+*int $opcionElegida, $numPalabra, $elMax, $elMin, $nPartida
+*bool $verificaPalabra
+*
 */
 
 
@@ -178,13 +179,14 @@ do {
     switch ($opcionElegida) {
         case 1:
             echo " Bienvenido! \n";
-            solicitarJugador();
+            $jugador=solicitarJugador();
             $elMax = miMaxInd($miColeccionPalabras);
             $elMin = miMenInd($elMax);
             $numPalabra = solicitarNumeroEntre($elMin, $elMax);
             $palabraJuego = $miColeccionPalabras[$numPalabra];
             $coleccionPartidas[$i] = jugarWordix($palabraJuego, $jugador);
             $i++;
+          
 
 
             //Aca ya te arreglé las cosas con los problemas que te repetian. -Ariel 
@@ -237,14 +239,15 @@ do {
                 $deNuevo = trim(fgets(STDIN));
                 strtoupper($deNuevo);
             } while ($deNuevo == "SI");
-*/
+            */
             //mostrar una partida  
 
             //NO PRESTEN MUCHA ATENCION A ESTO, ESTOY PROBANDO COSAS Y POR AHORA VA RE BIEN LA 3. -ARIEL
 
             break;
         case 4:
-
+            solicitarJugador();
+            
             echo "PRIMERA PARTIDA GANADORA:";
             print_r($partidasGanadas[0]);
 

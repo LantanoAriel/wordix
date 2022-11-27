@@ -30,6 +30,26 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
  *  ****COMPLETAR*****
  */
 
+ /** Obtiene una coleccion de partidas
+  * @return array 
+ */
+function cargarColeccionPartidas(){
+    $coleccionPartidas = [];
+    $coleccionPartidas =[
+       ["palabraWordix" => "FUEGO","jugador" => "lilmauro","intentos" => "3","puntaje" => "4"],
+       ["palabraWordix" => "QUESO","jugador" => "","intentos" => "4","puntaje" => "5"],
+       ["palabraWordix" => "CASAS","jugador" => "ariel","intentos" => "5","puntaje" => "2"],
+       ["palabraWordix" => "PLAZA","jugador" => "fabro","intentos" => "1","puntaje" => "17"],
+       ["palabraWordix" => "PERRO","jugador" => "fronchi","intentos" => "2","puntaje" => "15"],
+       ["palabraWordix" => "GOTAS","jugador" => "ariana","intentos" => "6","puntaje" => "7"],
+       ["palabraWordix" => "TINTO","jugador" => "santaclau","intentos" => "2","puntaje" => "16"],
+       ["palabraWordix" => "YUYOS","jugador" => "cristeanus","intentos" => "5","puntaje" => "11"],
+       ["palabraWordix" => "CLAVE","jugador" => "antorchinsky","intentos" => "1","puntaje" => "20"],
+       ["palabraWordix" => "LUCES","jugador" => "joma","intentos" => "4","puntaje" => "12"]
+
+    ];
+}
+
 
 /**
  * Obtiene una colección de palabras
