@@ -12,6 +12,90 @@ Lantaño, Daniel Ariel. FAI-2305. TUDW. s.lantanoariel@gmail.com. lantanoariel
 /***** DEFINICION DE FUNCIONES ********/
 /**************************************/
 
+/**
+ * Verifica si el usuario ingresado esta presente en coleccion de partidas
+ * @param array $coleccionJugadores
+ * @param string $player
+ * @return boolean
+ */
+function esJugador($coleccionJugadores, $player)
+{
+    $i = 0;
+    $esJugador = false;
+    $elMax = miMaxInd($coleccionJugadores);
+    while ($i < $elMax && $coleccionJugadores[$i]["jugador"] != $player) {
+        $i = $i + 1;
+    }
+    if ($coleccionJugadores[$i]["jugador"] == $player) {
+        $esJugador = true;
+    }
+
+    return $esJugador;
+}
+
+/*
+ * muestra el resumen de el jugador ingresado
+ * @param string $nombreDelJugador
+ * @return array
+ */
+/*
+ * retorna el resumen del jugador
+ * @param string $jugador
+ */
+function resumenJugador($jugador, $jugoPartidas){
+ 
+    $miColeccionPartidas =
+        ["jugador" => $jugador,"partidas" => 0,"puntaje" => 0,"victorias" => 0, "intento1" => 0,"intento2" => 0,"intento3" => 0,"intento4" => 0,"intento5" => 0,"intento6" => 0];
+
+
+        foreach ($jugoPartidas as $indicePartida => $infoPar) {
+            if ($jugador == $infoPar["jugador"]) {
+                $miColeccionPartidas["partidas"] += 1;
+                $miColeccionPartidas["puntaje"] += $infoPar["puntaje"];
+                if ($infoPar["puntaje"] >0) {
+                    $miColeccionPartidas["victorias"] += 1;
+                }
+                switch ($infoPar["intentos"]) {
+                    case 1:
+                        $miColeccionPartidas["intento1"] += 1;
+                        break;
+
+                    case 2:
+                        $miColeccionPartidas["intento2"] += 1;
+                        break;
+                    case 3:
+                        $miColeccionPartidas["intento3"] += 1;
+                        break;
+case 4:
+                        $miColeccionPartidas["intento4"] += 1;
+                        break;
+                    case 5:
+                        $miColeccionPartidas["intento5"] += 1;
+                        break;
+                    case 6:
+                        $miColeccionPartidas["intento6"] += 1;
+                        break;
+
+                }
+            }
+        }
+        $porcentaje = $miColeccionPartidas["victorias"]*100 / $miColeccionPartidas["partidas"];
+echo "\n**\n";
+        echo "Jugador: " . $jugador . "\n";
+        echo "Partidas: " .$miColeccionPartidas ["partidas"]. "\n";
+        echo "Puntaje Total: " .$miColeccionPartidas ["puntaje"]. "\n";
+        echo "Victorias: " .$miColeccionPartidas ["victorias"]. "\n";
+        echo "Porcentaje Victorias: " .round($porcentaje,2). "%\n";
+        echo "Adivinadas: \n";
+        echo "      Intento 1: " .$miColeccionPartidas["intento1"]. "\n";
+        echo "      Intento 2: " .$miColeccionPartidas["intento2"]. "\n";
+        echo "      Intento 3: " .$miColeccionPartidas["intento3"]. "\n";
+        echo "      Intento 4: " .$miColeccionPartidas["intento4"]. "\n";
+        echo "      Intento 5: " .$miColeccionPartidas["intento5"]. "\n";
+        echo "      Intento 6: " .$miColeccionPartidas["intento6"]. "\n";
+        echo "**\n";
+    }
+
 /** Muestra el menú para el usuario
  * @param string $player
  */
@@ -39,9 +123,16 @@ function mostrarMenu()
 function mostrarDatos($coleccionJuegos, $nIndice)
 {
     $datoPartida = $coleccionJuegos[$nIndice];
-    $nIndice  = ++$nIndice;
     echo $nIndice;
-    echo "Datos de la partida: \n" . "Nombre: " . $datoPartida["jugador"] . "\n" . "Palabra: " . $datoPartida["palabraWordix"] . "\n" . "Puntaje: " . $datoPartida["puntaje"] . "\n" . "Adivino en el intento: " . $datoPartida["intentos"];
+
+    if($datoPartida["intentos"] > 0){
+    echo "Partida WORDIX " . $nIndice . ": palabra " . $datoPartida["palabraWordix"]. "\n" . "Jugador: " . $datoPartida["jugador"] . "\n" . "Puntaje: " . $datoPartida["puntaje"] . " puntos\n" . "Intento: Adivinó la palabra en " . $datoPartida["intentos"] . " intentos";
+    }
+    else{
+    
+        echo "Partida WORDIX " . $nIndice . ": palabra " . $datoPartida["palabraWordix"]. "\n" . "Jugador: " . $datoPartida["jugador"] . "\n" . "Puntaje: " . $datoPartida["puntaje"] . " puntos". "\n" . "Intento: No adivinó la palabra.";
+ 
+    }
 }
 
 
@@ -161,22 +252,37 @@ function primerPartidaGanada($usuario, $miColeccionPartidas)
     $aux = 0;
     for ($i = 0; $i < count($miColeccionPartidas); $i++) {
         if ($miColeccionPartidas[$i]['jugador'] == $usuario && $miColeccionPartidas[$i]['intentos'] > 0) {
-            $aux = 0;
-        } else if ($miColeccionPartidas[$i]['jugador'] == $usuario && $miColeccionPartidas[$i]['intentos'] == 0) {
             $aux = 1;
-        } else {
+        } else if ($miColeccionPartidas[$i]['jugador'] == $usuario && $miColeccionPartidas[$i]['intentos'] == 0) {
             $aux = 2;
         }
     }
+    $datos = [];
+    $indice = 0;
+    for ($i = 0; $i < count($miColeccionPartidas); $i++) {
+        if ($miColeccionPartidas[$i]['jugador'] == $usuario) {
+            $indice = $indice + $i;
+            $datos = $datos + $miColeccionPartidas[$i];
+        }
+    }
     switch ($aux) {
-        case 0:
-            echo "El jugador a ganado";
-            break;
         case 1:
-            echo "El jugador no a ganado ninguna partida";
+            echo "**\n";
+            echo "* Partida WORDIX " . $indice . " : Palabra " . $datos['palabraWordix'] . "\n";
+            echo "* Jugador: " . $datos['jugador'] . "\n";
+            echo "* Puntaje: " . $datos['intentos'] . " Puntos\n";
+            echo "* Intentos: " . $datos['puntaje'] . "\n";
+            echo "**\n";
             break;
         case 2:
-            echo "El jugador no existe";
+            echo "**\n";
+            echo " El jugador " . $usuario . " no a ganado ninguna partida\n";
+            echo "**\n";
+            break;
+        default:
+            echo "**\n";
+            echo "* El jugador no existe\n";
+            echo "*\n";
             break;
     }
 }
@@ -257,7 +363,7 @@ do {
             $elMax = miMaxInd($miColeccionPartidas);
             $elMin = miMenInd($elMax);
 
-            echo "seleccione una partida entre la partida numero " . $elMin + 1 . " y la numero " . $elMax + 1;
+            echo "seleccione una partida entre la partida numero " . $elMin . " y la numero " . $elMax . "\n";
 
             $indice = trim(fgets(STDIN));
 
@@ -276,12 +382,13 @@ do {
 
         case 5:
 
-            do {
-                echo "escriba el nombre del jugador";
-                $nombreJ = trim(fgets(STDIN));
-                print_r($resumenGlobal[$nombreJ]);
-                echo "desea ver el resumen de otro jugador?(s/n)";
-            } while ($deNuevo == "si");
+            $jugador = solicitarJugador();
+            $esJugador = esJugador($miColeccionPartidas, $jugador);
+            if ($esJugador) {
+                resumenJugador($jugador, $miColeccionPartidas);
+            }else {
+                echo "\n el usuario no existe \n";
+            }
 
             //mostrar resumen de jugador
 
