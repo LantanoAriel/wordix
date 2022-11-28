@@ -19,16 +19,16 @@ function mostrarMenu()
 {
     //$opcionElegida
     echo "\n";
-    echo "***************************************************** \n";
-    echo "1) Jugar Wordix con una palabra predeterminada \n";
-    echo "2) Jugar Wordix con una palabra aleatoria \n";
-    echo "3) Mostrar una partida \n";
-    echo "4) Mostrar la primera partida ganadora \n";
-    echo "5) Mostrar resumen de un jugador \n";
-    echo "6) Mostrar listado de partidas ordenadas por jugador y por palabra \n";
-    echo "7) Agregar una palabra de 5 letras \n";
-    echo "8) Salir \n";
-    echo "***************************************************** \n";
+    echo "**********************************************************************\n";
+    echo "* 1) Jugar Wordix con una palabra predeterminada                     *\n";
+    echo "* 2) Jugar Wordix con una palabra aleatoria                          *\n";
+    echo "* 3) Mostrar una partida                                             *\n";
+    echo "* 4) Mostrar la primera partida ganadora                             *\n";
+    echo "* 5) Mostrar resumen de un jugador                                   *\n";
+    echo "* 6) Mostrar listado de partidas ordenadas por jugador y por palabra *\n";
+    echo "* 7) Agregar una palabra de 5 letras                                 *\n";
+    echo "* 8) Salir                                                           *\n";
+    echo "********************************************************************** \n";
 }
 
 /** Muestra los datos de la partida jugada
@@ -40,6 +40,7 @@ function mostrarDatos($coleccionJuegos, $nIndice)
 {
     $datoPartida = $coleccionJuegos[$nIndice];
     $nIndice  = ++$nIndice;
+    echo $nIndice;
     echo "Datos de la partida: \n" . "Nombre: " . $datoPartida["jugador"] . "\n" . "Palabra: " . $datoPartida["palabraWordix"] . "\n" . "Puntaje: " . $datoPartida["puntaje"] . "\n" . "Adivino en el intento: " . $datoPartida["intentos"];
 }
 
@@ -85,28 +86,6 @@ function ordenarArray($sinOrdenar)
     print_r($sinOrdenar);
 }
 //esta es la funcion sin retorno que se nos pedia en el inciso para la opcion 6 del menu -M
-
-/** Muestra una partida guardada 
- * @param array $unaPartida
- * @param int $numPartida
- * @return void
- */
-function muestraUnaPar($unaPartida, $numPartida)
-{
-    echo "\n";
-    echo " Partida WORDIX " . $numPartida . ": Palabra " . $unaPartida["palabraWordix"] . "\n";
-    echo " Puntaje: " . $unaPartida["puntaje"] . "\n";
-    echo " Jugador: " . $unaPartida["jugador"] . "\n";
-    if ($unaPartida["puntaje"] == 0) {
-        echo " intentos: no adivino la palabra\n";
-    } else {
-        echo " intentos: " . $unaPartida["intentos"] . "\n";
-    }
-    echo "*****************************************\n";
-    echo " ***************************************\n";
-    echo "\n";
-}
-
 
 
 /** 
@@ -156,49 +135,7 @@ function resumenJugadores($arrayResumen, $nombreJ)
     return $resumen;
 }
 
-//esta funcion la realize para la opcion 5 del menu :) -M
 
-/**
- * Dado un jugador, retorna el índice de su primera partida ganada guardada en el arreglo. Sino retorna -1
- * @param string $usuarioJ
- * @param array $partidasJugadas
- * @param int $indice
- * @return int $numPartida
- */
-function primerPartidaGanada($usuarioJ, $partidasJugadas, $numPartida)
-{
-    //int $i, $indice//
-    $indice = -1;
-    $i = 0;
-    while ($i < $numPartida && ($usuarioJ != $partidasJugadas[$i]["jugador"] || $partidasJugadas[$i]["puntaje"] == 0)) {
-        $i++;
-    }
-    if ($i < $numPartida) {
-        $indice = $i;
-    }
-    return $indice;
-}
-
-/**
- * Verifica si el usuario ingresado esta presente en coleccion de partidas
- * @param array $coleccionJugadores
- * @param string $player
- * @return boolean
- */
-function esJugador($coleccionJugadores, $player)
-{
-    $i = 0;
-    $esJugador = false;
-    $elMax = miMaxInd($coleccionJugadores);
-    while ($i < $elMax && $coleccionJugadores[$i]["jugador"] != $player) {
-        $i = $i + 1;
-    }
-    if ($coleccionJugadores[$i]["jugador"] == $player) {
-        $esJugador = true;
-    }
-
-    return $esJugador;
-}
 
 //Verifica si el jugador ya utilizo la palabra
 /*
@@ -216,6 +153,31 @@ function palabraRepetida($usuario, $palabra, $comprobar)
         return $aux;
     } else {
         return $aux;
+    }
+}
+
+function primerPartidaGanada($usuario, $miColeccionPartidas)
+{
+    $aux = 0;
+    for ($i = 0; $i < count($miColeccionPartidas); $i++) {
+        if ($miColeccionPartidas[$i]['jugador'] == $usuario && $miColeccionPartidas[$i]['intentos'] > 0) {
+            $aux = 0;
+        } else if ($miColeccionPartidas[$i]['jugador'] == $usuario && $miColeccionPartidas[$i]['intentos'] == 0) {
+            $aux = 1;
+        } else {
+            $aux = 2;
+        }
+    }
+    switch ($aux) {
+        case 0:
+            echo "El jugador a ganado";
+            break;
+        case 1:
+            echo "El jugador no a ganado ninguna partida";
+            break;
+        case 2:
+            echo "El jugador no existe";
+            break;
     }
 }
 /* ... COMPLETAR ... */
@@ -257,6 +219,7 @@ do {
 
     switch ($opcionElegida) {
         case 1:
+
             echo " Bienvenido! \n";
             $jugador = solicitarJugador();
             $elMax = miMaxInd($miColeccionPalabras);
@@ -273,7 +236,9 @@ do {
             //Aca ya te arreglé las cosas con los problemas que te repetian. -Ariel
             //Solo falta poner unas cosas mas respecto a las condiciones que da
             break;
+
         case 2:
+
             echo " Bienvenido! \n";
             $jugador = solicitarJugador();
             $conteo = count($miColeccionPalabras);
@@ -296,61 +261,29 @@ do {
 
 
             break;
+
         case 3:
+
             $elMax = miMaxInd($miColeccionPartidas);
             $elMin = miMenInd($elMax);
 
-            echo "seleccione una partida entre la partida numero " . $elMin . " y la numero " . $elMax;
+            echo "seleccione una partida entre la partida numero " . $elMin + 1 . " y la numero " . $elMax + 1;
 
             $indice = trim(fgets(STDIN));
-            //$indice--;
+
             if ($indice >= 0 && $indice < count($miColeccionPartidas)) {
                 mostrarDatos($miColeccionPartidas, $indice);
             } else {
                 echo "El número ingresado no corresponde a ningún juego.\n";
             }
-
-
-            /* $elMax = miMaxInd($coleccionPartidas);
-            $elMin = miMenInd($elMax);
-            do {
-                echo "seleccione una partida entre la partida numero " . $elMin . " y la numero " . $elMax;
-                $nPartida = trim(fgets(STDIN));
-                echo "PARTIDA NÚMERO: " . $nPartida;
-                print_r($coleccionPartidas[$nPartida]);
-                echo "Desea ver otra partida? Si/No";
-                $deNuevo = trim(fgets(STDIN));
-                strtoupper($deNuevo);
-            } while ($deNuevo == "SI");
-            */
-            //mostrar una partida  
-
-            //NO PRESTEN MUCHA ATENCION A ESTO, ESTOY PROBANDO COSAS Y POR AHORA VA RE BIEN LA 3. -ARIEL
-
             break;
+
         case 4:
+
             $usuario = solicitarJugador();
-            $elMax = miMaxInd($miColeccionPalabras);
-            echo " ***********************************\n";
-            echo "      PRIMERA PARTIDA GANADORA:\n";
-            echo "*************************************";
-
-            $indiceGanada = primerPartidaGanada($usuario, $miColeccionPartidas, $elMax);
-            $esJugador = esJugador($miColeccionPartidas, $usuario);
-
-            if ($indiceGanada != -1) {
-                muestraUnaPar($miColeccionPartidas[$indiceGanada], $indiceGanada);
-            }
-            if (!$esJugador) {
-                echo "\n El jugador " . $usuario . " no existe.\n";
-            }
-            if ($indiceGanada == -1 && $esJugador) {
-                echo "\n El jugador " . $usuario . " no ganó ninguna partida.\n";
-            }
-
-            //mostrar la primera partida ganadora
-
+            primerPartidaGanada($usuario, $miColeccionPartidas);
             break;
+
         case 5:
 
             do {
@@ -364,6 +297,7 @@ do {
 
             break;
         case 6:
+
             echo "Listado ordenado de las partidas jugadas";
             ordenarArray($miColeccionPartidas);
 
@@ -371,31 +305,41 @@ do {
             //aca llame la funcion que hice arriba xd -M
 
             break;
+
         case 7:
 
             echo "ingrese la palabra que quiera agregar a wordix:";
             $nuevaPalabra = trim(fgets(STDIN));
+            $nuevaPalabra = strtoupper($nuevaPalabra);
+            $valido = false;
+            for ($i = 0; $i < count($miColeccionPartidas); $i++) {
+                if ($miColeccionPartidas[$i]["palabraWordix"] == $nuevaPalabra) {
+                    $valido = true;
+                }
+            }
             $verificaPalabra = esPalabra($nuevaPalabra);
             $nuevaPalabra = strtoupper($nuevaPalabra);
-
-            if ($verificaPalabra == 1 && strlen($nuevaPalabra) == 5) {
+            if ($verificaPalabra == 1 && strlen($nuevaPalabra) == 5 && $valido == false) {
                 array_push($miColeccionPalabras, $nuevaPalabra);
-                print_r($miColeccionPalabras);
             } elseif ($verificaPalabra != 1) {
                 echo "Lo ingresado debe ser una palabra";
+            } elseif ($valido == true) {
+                echo "La palabra esta repetida";
             } else {
                 echo "Su palabra debe ser de una longitud de 5 letras";
             }
-
-
-            //agregar una palabra de 5 letras a wordix YA LO HICE! :D -ARIEL
-
             break;
+
         case 8:
-            //Salir
 
+            echo chr(27) . chr(91) . 'H' . chr(27) . chr(91) . 'J';
+            echo "\n**************************************";
+            echo "\n* Gracias por jugar a con mi corazón *";
+            echo "\n**************************************	\n";
             break;
+
         default:
+        
             echo "Ingrese un numero valido entre el 1 y el 8 \n";
     }
 } while ($opcionElegida != 8);
