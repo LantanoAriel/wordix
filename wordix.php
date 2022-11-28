@@ -26,10 +26,6 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
 /***** DEFINICION DE FUNCIONES ********/
 /**************************************/
 
-/**
- *  ****COMPLETAR*****
- */
-
  /** Obtiene una coleccion de partidas
   * @return array 
  */

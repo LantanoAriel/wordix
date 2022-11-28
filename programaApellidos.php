@@ -123,7 +123,6 @@ function mostrarMenu()
 function mostrarDatos($coleccionJuegos, $nIndice)
 {
     $datoPartida = $coleccionJuegos[$nIndice];
-    echo $nIndice;
 
     if($datoPartida["intentos"] > 0){
     echo "Partida WORDIX " . $nIndice . ": palabra " . $datoPartida["palabraWordix"]. "\n" . "Jugador: " . $datoPartida["jugador"] . "\n" . "Puntaje: " . $datoPartida["puntaje"] . " puntos\n" . "Intento: Adivinó la palabra en " . $datoPartida["intentos"] . " intentos";
@@ -258,34 +257,36 @@ function primerPartidaGanada($usuario, $miColeccionPartidas)
         }
     }
     $datos = [];
-    $indice = 0;
+
     for ($i = 0; $i < count($miColeccionPartidas); $i++) {
-        if ($miColeccionPartidas[$i]['jugador'] == $usuario) {
-            $indice = $indice + $i;
+        if ($miColeccionPartidas[$i]['jugador'] == $usuario && $miColeccionPartidas[$i]['intentos'] > 0) {
+
             $datos = $datos + $miColeccionPartidas[$i];
+            $priPar = array_search($usuario, array_column($miColeccionPartidas, 'jugador'));
         }
     }
     switch ($aux) {
-        case 1:
-            echo "**\n";
-            echo "* Partida WORDIX " . $indice . " : Palabra " . $datos['palabraWordix'] . "\n";
+        case 1:   
+            echo "********************************************************************\n";
+            echo "* Partida WORDIX " . $priPar . " : Palabra " . $datos['palabraWordix'] . "\n";
             echo "* Jugador: " . $datos['jugador'] . "\n";
-            echo "* Puntaje: " . $datos['intentos'] . " Puntos\n";
-            echo "* Intentos: " . $datos['puntaje'] . "\n";
-            echo "**\n";
+            echo "* Puntaje: " . $datos['puntaje'] . " Puntos\n";
+            echo "* Intentos: " . $datos['intentos'] . "\n";
+            echo "********************************************************************\n";
             break;
         case 2:
-            echo "**\n";
-            echo " El jugador " . $usuario . " no a ganado ninguna partida\n";
-            echo "**\n";
+            echo "*************************************************************\n";
+            echo "* El jugador " . $usuario . " no a ganado ninguna partida   *\n";
+            echo "*************************************************************\n";
             break;
         default:
-            echo "**\n";
-            echo "* El jugador no existe\n";
-            echo "*\n";
+            echo "*************************\n";
+            echo "* El jugador no existe  *\n";
+            echo "*************************\n";
             break;
     }
 }
+
 /* ... COMPLETAR ... */
 
 
