@@ -37,13 +37,13 @@ function cargarColeccionPartidas(){
     $coleccionPartidas =[
         ["palabraWordix" => "FUEGO","jugador" => "lilmauro","intentos" => "3","puntaje" => "4"],
         ["palabraWordix" => "QUESO","jugador" => "brunardo","intentos" => "4","puntaje" => "5"],
-        ["palabraWordix" => "CASAS","jugador" => "ariel","intentos" => "5","puntaje" => "2"],
+        ["palabraWordix" => "CASAS","jugador" => "mermariel","intentos" => "5","puntaje" => "2"],
         ["palabraWordix" => "PLAZA","jugador" => "fabro","intentos" => "1","puntaje" => "17"],
         ["palabraWordix" => "PERRO","jugador" => "fronchi","intentos" => "2","puntaje" => "15"],
         ["palabraWordix" => "GOTAS","jugador" => "ariana","intentos" => "6","puntaje" => "7"],
         ["palabraWordix" => "TINTO","jugador" => "santaclau","intentos" => "2","puntaje" => "16"],
         ["palabraWordix" => "YUYOS","jugador" => "cristeanus","intentos" => "5","puntaje" => "11"],
-        ["palabraWordix" => "CLAVE","jugador" => "ivanovsky","intentos" => "1","puntaje" => "20"],
+        ["palabraWordix" => "CLAVE","jugador" => "torchinsky","intentos" => "1","puntaje" => "20"],
         ["palabraWordix" => "LUCES","jugador" => "joma","intentos" => "4","puntaje" => "12"]
      ];
     return $coleccionPartidas;
