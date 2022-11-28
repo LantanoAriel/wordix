@@ -233,8 +233,6 @@ do {
             } else {
                 echo "El jugador " . $jugador . " ya utilizo la palabra " . $palabraJuego;
             }
-            //Aca ya te arreglé las cosas con los problemas que te repetian. -Ariel
-            //Solo falta poner unas cosas mas respecto a las condiciones que da
             break;
 
         case 2:
@@ -251,14 +249,6 @@ do {
             } else {
                 echo "El jugador " . $jugador . " ya utilizo la palabra " . $palabraAleatoria;
             }
-
-            //llega a jugar con una palabra aleatoria, tiene el mismo error que el caso 1, se repite (y la funcion "mt_rand" la saque de internet) -B
-            //por las dudas no dejé declaradas la variables $conteo, $aleatoria y $resultado -BRUUUNO
-            //Ya te arreglé el tema de la repeticion infinita :) -ARIEL
-            //Lo mismo que arriba, hay que terminar lo de las condiciones -ARIEL
-
-            //jugar al wordix con una palabra aleatoria
-
 
             break;
 
