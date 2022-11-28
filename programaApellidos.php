@@ -33,14 +33,9 @@ function esJugador($coleccionJugadores, $player)
     return $esJugador;
 }
 
-/*
- * muestra el resumen de el jugador ingresado
+/** muestra el resumen de el jugador ingresado
  * @param string $nombreDelJugador
  * @return array
- */
-/*
- * retorna el resumen del jugador
- * @param string $jugador
  */
 function resumenJugador($jugador, $jugoPartidas){
  
@@ -261,8 +256,9 @@ function palabraRepetida($usuario, $palabra, $comprobar)
         return $aux;
     }
 }
-/**
- * 
+/** Busca la primera partida ganada del usuario ingresado
+ * @param string $usuario
+ * @param array $miColeccionPartidas
  */
 function primerPartidaGanada($usuario, $miColeccionPartidas)
 {
