@@ -80,10 +80,10 @@ function miMaxInd($coleccionPal)
  * @param int $elMax
  * @return int
  */
-function miMenInd($elMax)
+function miMenInd($max)
 {
     //int $minInd
-    $minInd = $elMax - $elMax;
+    $minInd = $max - $max;
     return $minInd;
 }
 
