@@ -12,6 +12,70 @@ Lantaño, Daniel Ariel. FAI-2305. TUDW. s.lantanoariel@gmail.com. lantanoariel
 /***** DEFINICION DE FUNCIONES ********/
 /**************************************/
 
+
+/*
+ * muestra el resumen de el jugador ingresado
+ * @param string $nombreDelJugador
+ * @return array
+ */
+/*
+ * retorna el resumen del jugador
+ * @param string $jugador
+ */
+function resumenJugador($jugador, $jugoPartidas){
+ 
+    $miColeccionPartidas =
+        ["jugador" => $jugador,"partidas" => 0,"puntaje" => 0,"victorias" => 0, "intento1" => 0,"intento2" => 0,"intento3" => 0,"intento4" => 0,"intento5" => 0,"intento6" => 0];
+
+
+        foreach ($jugoPartidas as $indicePartida => $infoPar) {
+            if ($jugador == $infoPar["jugador"]) {
+                $miColeccionPartidas["partidas"] += 1;
+                $miColeccionPartidas["puntaje"] += $infoPar["puntaje"];
+                if ($infoPar["puntaje"] >0) {
+                    $miColeccionPartidas["victorias"] += 1;
+                }
+                switch ($infoPar["intentos"]) {
+                    case 1:
+                        $miColeccionPartidas["intento1"] += 1;
+                        break;
+
+                    case 2:
+                        $miColeccionPartidas["intento2"] += 1;
+                        break;
+                    case 3:
+                        $miColeccionPartidas["intento3"] += 1;
+                        break;
+case 4:
+                        $miColeccionPartidas["intento4"] += 1;
+                        break;
+                    case 5:
+                        $miColeccionPartidas["intento5"] += 1;
+                        break;
+                    case 6:
+                        $miColeccionPartidas["intento6"] += 1;
+                        break;
+
+                }
+            }
+        }
+        $porcentaje = $miColeccionPartidas["victorias"]*100 / $miColeccionPartidas["partidas"];
+echo "\n**\n";
+        echo "Jugador: " . $jugador . "\n";
+        echo "Partidas: " .$miColeccionPartidas ["partidas"]. "\n";
+        echo "Puntaje Total: " .$miColeccionPartidas ["puntaje"]. "\n";
+        echo "Victorias: " .$miColeccionPartidas ["victorias"]. "\n";
+        echo "Porcentaje Victorias: " .round($porcentaje,2). "%\n";
+        echo "Adivinadas: \n";
+        echo "      Intento 1: " .$miColeccionPartidas["intento1"]. "\n";
+        echo "      Intento 2: " .$miColeccionPartidas["intento2"]. "\n";
+        echo "      Intento 3: " .$miColeccionPartidas["intento3"]. "\n";
+        echo "      Intento 4: " .$miColeccionPartidas["intento4"]. "\n";
+        echo "      Intento 5: " .$miColeccionPartidas["intento5"]. "\n";
+        echo "      Intento 6: " .$miColeccionPartidas["intento6"]. "\n";
+        echo "**\n";
+    }
+
 /** Muestra el menú para el usuario
  * @param string $player
  */
@@ -39,8 +103,16 @@ function mostrarMenu()
 function mostrarDatos($coleccionJuegos, $nIndice)
 {
     $datoPartida = $coleccionJuegos[$nIndice];
-    $nIndice  = ++$nIndice;
-    echo "Datos de la partida: \n" . "Nombre: " . $datoPartida["jugador"] . "\n" . "Palabra: " . $datoPartida["palabraWordix"] . "\n" . "Puntaje: " . $datoPartida["puntaje"] . "\n" . "Adivino en el intento: " . $datoPartida["intentos"];
+    echo $nIndice;
+
+    if($datoPartida["intentos"] > 0){
+    echo "Partida WORDIX " . $nIndice . ": palabra " . $datoPartida["palabraWordix"]. "\n" . "Jugador: " . $datoPartida["jugador"] . "\n" . "Puntaje: " . $datoPartida["puntaje"] . " puntos\n" . "Intento: Adivinó la palabra en " . $datoPartida["intentos"] . " intentos";
+    }
+    else{
+    
+        echo "Partida WORDIX " . $nIndice . ": palabra " . $datoPartida["palabraWordix"]. "\n" . "Jugador: " . $datoPartida["jugador"] . "\n" . "Puntaje: " . $datoPartida["puntaje"] . " puntos". "\n" . "Intento: No adivinó la palabra.";
+ 
+    }
 }
 
 
@@ -119,26 +191,6 @@ function solicitarJugador()
 
 //esta funcion la realize para la opcion 5 del menu :) -M
 
-/**
- * Dado un jugador, retorna el índice de su primera partida ganada guardada en el arreglo. Sino retorna -1
- * @param string $usuarioJ
- * @param array $partidasJugadas
- * @param int $indice
- * @return int $numPartida
- */
-function primerPartidaGanada($usuarioJ, $partidasJugadas, $numPartida)
-{
-    //int $i, $indice//
-    $indice = -1;
-    $i = 0;
-    while ($i < $numPartida && ($usuarioJ != $partidasJugadas[$i]["jugador"] || $partidasJugadas[$i]["puntaje"] == 0)) {
-        $i++;
-    }
-    if ($i < $numPartida) {
-        $indice = $i;
-    }
-    return $indice;
-}
 
 /**
  * Verifica si el usuario ingresado esta presente en coleccion de partidas
@@ -180,70 +232,45 @@ function palabraRepetida($usuario, $palabra, $comprobar)
     }
 }
 
-
-/**
- * muestra el resumen de el jugador ingresado
- * @param string $nombreDelJugador
- * @return array
- */
-/**
- * retorna el resumen del jugador
- * @param string $jugador
- */
-function resumenJugador($jugador, $jugoPartidas){
- 
-    $miColeccionPartidas =
-        ["jugador" => $jugador,"partidas" => 0,"puntaje" => 0,"victorias" => 0, "intento1" => 0,"intento2" => 0,"intento3" => 0,"intento4" => 0,"intento5" => 0,"intento6" => 0];
-
-        
-        foreach ($jugoPartidas as $indicePartida => $infoPar) {
-            if ($jugador == $infoPar["jugador"]) {
-                $miColeccionPartidas["partidas"] += 1;
-                $miColeccionPartidas["puntaje"] += $infoPar["puntaje"];
-                if ($infoPar["puntaje"] >0) {
-                    $miColeccionPartidas["victorias"] += 1;
-                }
-                switch ($infoPar["intentos"]) {
-                    case 1:
-                        $miColeccionPartidas["intento1"] += 1;
-                        break;
-        
-                    case 2:
-                        $miColeccionPartidas["intento2"] += 1;
-                        break;
-                    case 3:
-                        $miColeccionPartidas["intento3"] += 1;
-                        break;
-                    case 4:
-                        $miColeccionPartidas["intento4"] += 1;
-                        break;
-                    case 5:
-                        $miColeccionPartidas["intento5"] += 1;
-                        break;
-                    case 6:
-                        $miColeccionPartidas["intento6"] += 1;
-                        break;
-        
-                }
-            }
+function primerPartidaGanada($usuario, $miColeccionPartidas)
+{
+    $aux = 0;
+    for ($i = 0; $i < count($miColeccionPartidas); $i++) {
+        if ($miColeccionPartidas[$i]['jugador'] == $usuario && $miColeccionPartidas[$i]['intentos'] > 0) {
+            $aux = 1;
+        } else if ($miColeccionPartidas[$i]['jugador'] == $usuario && $miColeccionPartidas[$i]['intentos'] == 0) {
+            $aux = 2;
         }
-        $porcentaje = $miColeccionPartidas["victorias"]*100 / $miColeccionPartidas["partidas"];
-
-        echo "\n***************************************************\n";
-        echo "Jugador: " . $jugador . "\n";
-        echo "Partidas: " .$miColeccionPartidas ["partidas"]. "\n";
-        echo "Puntaje Total: " .$miColeccionPartidas ["puntaje"]. "\n";
-        echo "Victorias: " .$miColeccionPartidas ["victorias"]. "\n";
-        echo "Porcentaje Victorias: " .round($porcentaje,2). "%\n";
-        echo "Adivinadas: \n";
-        echo "      Intento 1: " .$miColeccionPartidas["intento1"]. "\n";
-        echo "      Intento 2: " .$miColeccionPartidas["intento2"]. "\n";
-        echo "      Intento 3: " .$miColeccionPartidas["intento3"]. "\n";
-        echo "      Intento 4: " .$miColeccionPartidas["intento4"]. "\n";
-        echo "      Intento 5: " .$miColeccionPartidas["intento5"]. "\n";
-        echo "      Intento 6: " .$miColeccionPartidas["intento6"]. "\n";
-        echo "***************************************************\n";
-    }    
+    }
+    $datos = [];
+    $indice = 0;
+    for ($i = 0; $i < count($miColeccionPartidas); $i++) {
+        if ($miColeccionPartidas[$i]['jugador'] == $usuario) {
+            $indice = $indice + $i;
+            $datos = $datos + $miColeccionPartidas[$i];
+        }
+    }
+    switch ($aux) {
+        case 1:
+            echo "**\n";
+            echo "* Partida WORDIX " . $indice . " : Palabra " . $datos['palabraWordix'] . "\n";
+            echo "* Jugador: " . $datos['jugador'] . "\n";
+            echo "* Puntaje: " . $datos['intentos'] . " Puntos\n";
+            echo "* Intentos: " . $datos['puntaje'] . "\n";
+            echo "**\n";
+            break;
+        case 2:
+            echo "**\n";
+            echo " El jugador " . $usuario . " no a ganado ninguna partida\n";
+            echo "**\n";
+            break;
+        default:
+            echo "**\n";
+            echo "* El jugador no existe\n";
+            echo "*\n";
+            break;
+    }
+}
 /* ... COMPLETAR ... */
 
 
@@ -327,7 +354,7 @@ do {
             $elMax = miMaxInd($miColeccionPartidas);
             $elMin = miMenInd($elMax);
 
-            echo "seleccione una partida entre la partida numero " . $elMin . " y la numero " . $elMax;
+            echo "seleccione una partida entre la partida numero " . $elMin . " y la numero " . $elMax . "\n";
 
             $indice = trim(fgets(STDIN));
             //$indice--;
@@ -338,19 +365,13 @@ do {
             }
 
 
-            /* $elMax = miMaxInd($coleccionPartidas);
-            $elMin = miMenInd($elMax);
-            do {
-                echo "seleccione una partida entre la partida numero " . $elMin . " y la numero " . $elMax;
-                $nPartida = trim(fgets(STDIN));
-                echo "PARTIDA NÚMERO: " . $nPartida;
-                print_r($coleccionPartidas[$nPartida]);
-                echo "Desea ver otra partida? Si/No";
-                $deNuevo = trim(fgets(STDIN));
-                strtoupper($deNuevo);
-            } while ($deNuevo == "SI");
-            */
-            //mostrar una partida  
+            $jugador = solicitarJugador();
+            $esJugador = esJugador($miColeccionPartidas, $jugador);
+            if ($esJugador) {
+                resumenJugador($jugador, $miColeccionPartidas);
+            }else {
+                echo "\n el usuario no existe \n";
+            }
 
             //NO PRESTEN MUCHA ATENCION A ESTO, ESTOY PROBANDO COSAS Y POR AHORA VA RE BIEN LA 3. -ARIEL
 
