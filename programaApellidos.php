@@ -42,59 +42,65 @@ function esJugador($coleccionJugadores, $player)
  * retorna el resumen del jugador
  * @param string $jugador
  */
-function resumenJugador($jugador, $jugoPartidas){
- 
-    $miColeccionPartidas =
-        ["jugador" => $jugador,"partidas" => 0,"puntaje" => 0,"victorias" => 0, "intento1" => 0,"intento2" => 0,"intento3" => 0,"intento4" => 0,"intento5" => 0,"intento6" => 0];
+function resumenJugador($jugador, $jugoPartidas)
+{
+
+    $datosJugador =
+        [
+            "jugador" => $jugador,
+            "partidas" => 0,
+            "puntaje" => 0,
+            "victorias" => 0,
+            "intento1" => 0, "intento2" => 0, "intento3" => 0, "intento4" => 0, "intento5" => 0, "intento6" => 0
+        ];
 
 
-        foreach ($jugoPartidas as $indicePartida => $infoPar) {
-            if ($jugador == $infoPar["jugador"]) {
-                $miColeccionPartidas["partidas"] += 1;
-                $miColeccionPartidas["puntaje"] += $infoPar["puntaje"];
-                if ($infoPar["puntaje"] >0) {
-                    $miColeccionPartidas["victorias"] += 1;
-                }
-                switch ($infoPar["intentos"]) {
-                    case 1:
-                        $miColeccionPartidas["intento1"] += 1;
-                        break;
+    foreach ($jugoPartidas as $indicePartida => $infoPar) {
+        if ($jugador == $infoPar["jugador"]) {
+            $datosJugador["partidas"] += 1;
+            $datosJugador["puntaje"] += $infoPar["puntaje"];
+            if ($infoPar["puntaje"] > 0) {
+                $datosJugador["victorias"] += 1;
+            }
+            switch ($infoPar["intentos"]) {
+                case 1:
+                    $datosJugador["intento1"] += 1;
+                    break;
 
-                    case 2:
-                        $miColeccionPartidas["intento2"] += 1;
-                        break;
-                    case 3:
-                        $miColeccionPartidas["intento3"] += 1;
-                        break;
-case 4:
-                        $miColeccionPartidas["intento4"] += 1;
-                        break;
-                    case 5:
-                        $miColeccionPartidas["intento5"] += 1;
-                        break;
-                    case 6:
-                        $miColeccionPartidas["intento6"] += 1;
-                        break;
-
-                }
+                case 2:
+                    $datosJugador["intento2"] += 1;
+                    break;
+                case 3:
+                    $datosJugador["intento3"] += 1;
+                    break;
+                case 4:
+                    $datosJugador["intento4"] += 1;
+                    break;
+                case 5:
+                    $datosJugador["intento5"] += 1;
+                    break;
+                case 6:
+                    $datosJugador["intento6"] += 1;
+                    break;
             }
         }
-        $porcentaje = $miColeccionPartidas["victorias"]*100 / $miColeccionPartidas["partidas"];
-echo "\n**\n";
-        echo "Jugador: " . $jugador . "\n";
-        echo "Partidas: " .$miColeccionPartidas ["partidas"]. "\n";
-        echo "Puntaje Total: " .$miColeccionPartidas ["puntaje"]. "\n";
-        echo "Victorias: " .$miColeccionPartidas ["victorias"]. "\n";
-        echo "Porcentaje Victorias: " .round($porcentaje,2). "%\n";
-        echo "Adivinadas: \n";
-        echo "      Intento 1: " .$miColeccionPartidas["intento1"]. "\n";
-        echo "      Intento 2: " .$miColeccionPartidas["intento2"]. "\n";
-        echo "      Intento 3: " .$miColeccionPartidas["intento3"]. "\n";
-        echo "      Intento 4: " .$miColeccionPartidas["intento4"]. "\n";
-        echo "      Intento 5: " .$miColeccionPartidas["intento5"]. "\n";
-        echo "      Intento 6: " .$miColeccionPartidas["intento6"]. "\n";
-        echo "**\n";
     }
+    $porcentaje = $datosJugador["victorias"] * 100 / $datosJugador["partidas"];
+    echo "\n**\n";
+    echo "Jugador: " . $jugador . "\n";
+    echo "Partidas: " . $datosJugador["partidas"] . "\n";
+    echo "Puntaje Total: " . $datosJugador["puntaje"] . "\n";
+    echo "Victorias: " . $datosJugador["victorias"] . "\n";
+    echo "Porcentaje Victorias: " . round($porcentaje, 2) . "%\n";
+    echo "Adivinadas: \n";
+    echo "      Intento 1: " . $datosJugador["intento1"] . "\n";
+    echo "      Intento 2: " . $datosJugador["intento2"] . "\n";
+    echo "      Intento 3: " . $datosJugador["intento3"] . "\n";
+    echo "      Intento 4: " . $datosJugador["intento4"] . "\n";
+    echo "      Intento 5: " . $datosJugador["intento5"] . "\n";
+    echo "      Intento 6: " . $datosJugador["intento6"] . "\n";
+    echo "**\n";
+}
 
 /** Muestra el menú para el usuario
  * @param string $player
@@ -124,13 +130,11 @@ function mostrarDatos($coleccionJuegos, $nIndice)
 {
     $datoPartida = $coleccionJuegos[$nIndice];
 
-    if($datoPartida["intentos"] > 0){
-    echo "Partida WORDIX " . $nIndice . ": palabra " . $datoPartida["palabraWordix"]. "\n" . "Jugador: " . $datoPartida["jugador"] . "\n" . "Puntaje: " . $datoPartida["puntaje"] . " puntos\n" . "Intento: Adivinó la palabra en " . $datoPartida["intentos"] . " intentos";
-    }
-    else{
-    
-        echo "Partida WORDIX " . $nIndice . ": palabra " . $datoPartida["palabraWordix"]. "\n" . "Jugador: " . $datoPartida["jugador"] . "\n" . "Puntaje: " . $datoPartida["puntaje"] . " puntos". "\n" . "Intento: No adivinó la palabra.";
- 
+    if ($datoPartida["intentos"] > 0) {
+        echo "Partida WORDIX " . $nIndice . ": palabra " . $datoPartida["palabraWordix"] . "\n" . "Jugador: " . $datoPartida["jugador"] . "\n" . "Puntaje: " . $datoPartida["puntaje"] . " puntos\n" . "Intento: Adivinó la palabra en " . $datoPartida["intentos"] . " intentos";
+    } else {
+
+        echo "Partida WORDIX " . $nIndice . ": palabra " . $datoPartida["palabraWordix"] . "\n" . "Jugador: " . $datoPartida["jugador"] . "\n" . "Puntaje: " . $datoPartida["puntaje"] . " puntos" . "\n" . "Intento: No adivinó la palabra.";
     }
 }
 
@@ -266,7 +270,7 @@ function primerPartidaGanada($usuario, $miColeccionPartidas)
         }
     }
     switch ($aux) {
-        case 1:   
+        case 1:
             echo "********************************************************************\n";
             echo "* Partida WORDIX " . $priPar . " : Palabra " . $datos['palabraWordix'] . "\n";
             echo "* Jugador: " . $datos['jugador'] . "\n";
@@ -387,7 +391,7 @@ do {
             $esJugador = esJugador($miColeccionPartidas, $jugador);
             if ($esJugador) {
                 resumenJugador($jugador, $miColeccionPartidas);
-            }else {
+            } else {
                 echo "\n el usuario no existe \n";
             }
 
@@ -438,7 +442,7 @@ do {
             break;
 
         default:
-        
+
             echo "Ingrese un numero valido entre el 1 y el 8 \n";
     }
 } while ($opcionElegida != 8);
