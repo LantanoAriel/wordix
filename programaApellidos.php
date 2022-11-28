@@ -40,7 +40,7 @@ function mostrarDatos($coleccionJuegos, $nIndice)
 {
     $datoPartida = $coleccionJuegos[$nIndice];
     $nIndice  = ++$nIndice;
-    echo "Datos de la partida: \n" . "Nombre: " . $datoPartida["jugador"] . "\n" . "Palabra: " . $datoPartida["palabraWordix"] . "\n" . "Puntaje: " . $datoPartida["puntaje"] . "\n" . "Cantidad de intentos: " . $datoPartida["intentos"];
+    echo "Datos de la partida: \n" . "Nombre: " . $datoPartida["jugador"] . "\n" . "Palabra: " . $datoPartida["palabraWordix"] . "\n" . "Puntaje: " . $datoPartida["puntaje"] . "\n" . "Adivino en el intento: " . $datoPartida["intentos"];
 }
 
 
@@ -200,6 +200,24 @@ function esJugador($coleccionJugadores, $player)
     return $esJugador;
 }
 
+//Verifica si el jugador ya utilizo la palabra
+/*
+*
+*/
+function palabraRepetida($usuario, $palabra, $comprobar)
+{
+    $aux = false;
+    foreach ($comprobar as $key => $elemento) {
+        if ($elemento['jugador'] == $usuario && $elemento['palabraWordix'] == $palabra) {
+            $aux = true;
+        }
+    }
+    if ($aux) {
+        return $aux;
+    } else {
+        return $aux;
+    }
+}
 /* ... COMPLETAR ... */
 
 
@@ -220,7 +238,7 @@ bool $verificaPalabra
 
 //INICIALIZACION DE VARIABLES:
 $nPartida = 0;
-
+$palabraNombre = [];
 $miColeccionPartidas = cargarColeccionPartidas();
 $miColeccionPalabras = cargarColeccionPalabras();
 $i = 0;
@@ -245,22 +263,15 @@ do {
             $elMin = miMenInd($elMax);
             $numPalabra = solicitarNumeroEntre($elMin, $elMax);
             $palabraJuego = $miColeccionPalabras[$numPalabra];
-            $miColeccionPartidas[$i] = jugarWordix($palabraJuego, $jugador);
-            $i++;
-
-            foreach($miColeccionPartidas as $miColeccionPartidas["jugador"] => $valor){
-                foreach ($valor as $valor2){
-                echo "$valor2 \n";
-                }
-
+            $jugar = palabraRepetida($jugador, $palabraJuego, $miColeccionPartidas);
+            if ($jugar == false) {
+                $nuevaPartida = jugarWordix($palabraJuego, $jugador);
+                array_push($miColeccionPartidas, $nuevaPartida);
+            } else {
+                echo "El jugador " . $jugador . " ya utilizo la palabra " . $palabraJuego;
             }
-
-
-
-            //Aca ya te arreglé las cosas con los problemas que te repetian. -Ariel 
-            //Solo falta poner unas cosas mas respecto a las condiciones que da 
-
-
+            //Aca ya te arreglé las cosas con los problemas que te repetian. -Ariel
+            //Solo falta poner unas cosas mas respecto a las condiciones que da
             break;
         case 2:
             echo " Bienvenido! \n";
@@ -268,9 +279,13 @@ do {
             $conteo = count($miColeccionPalabras);
             $aleatoria = mt_rand(0, $conteo - 1);
             $palabraAleatoria = $miColeccionPalabras[$aleatoria];
-            $miColeccionPartidas[$i] = jugarWordix($palabraAleatoria, $jugador);
-            $i++;
-
+            $jugar = palabraRepetida($jugador, $palabraAleatoria, $miColeccionPartidas);
+            if ($jugar == false) {
+                $nuevaPartida = jugarWordix($palabraAleatoria, $jugador);
+                array_push($miColeccionPartidas, $nuevaPartida);
+            } else {
+                echo "El jugador " . $jugador . " ya utilizo la palabra " . $palabraAleatoria;
+            }
 
             //llega a jugar con una palabra aleatoria, tiene el mismo error que el caso 1, se repite (y la funcion "mt_rand" la saque de internet) -B
             //por las dudas no dejé declaradas la variables $conteo, $aleatoria y $resultado -BRUUUNO
@@ -282,15 +297,15 @@ do {
 
             break;
         case 3:
-            $elMax = miMaxInd($coleccionPartidas);
+            $elMax = miMaxInd($miColeccionPartidas);
             $elMin = miMenInd($elMax);
 
             echo "seleccione una partida entre la partida numero " . $elMin . " y la numero " . $elMax;
 
             $indice = trim(fgets(STDIN));
-            $indice--;
-            if ($indice >= 0 && $indice < count($coleccionPartidas)) {
-                mostrarDatos($coleccionPartidas, $indice);
+            //$indice--;
+            if ($indice >= 0 && $indice < count($miColeccionPartidas)) {
+                mostrarDatos($miColeccionPartidas, $indice);
             } else {
                 echo "El número ingresado no corresponde a ningún juego.\n";
             }
@@ -320,11 +335,11 @@ do {
             echo "      PRIMERA PARTIDA GANADORA:\n";
             echo "*************************************";
 
-            $indiceGanada = primerPartidaGanada($usuario, $coleccionPartidas, $elMax);
-            $esJugador = esJugador($coleccionPartidas, $usuario);
+            $indiceGanada = primerPartidaGanada($usuario, $miColeccionPartidas, $elMax);
+            $esJugador = esJugador($miColeccionPartidas, $usuario);
 
             if ($indiceGanada != -1) {
-                muestraUnaPar($coleccionPartidas[$indiceGanada], $indiceGanada);
+                muestraUnaPar($miColeccionPartidas[$indiceGanada], $indiceGanada);
             }
             if (!$esJugador) {
                 echo "\n El jugador " . $usuario . " no existe.\n";
@@ -350,7 +365,7 @@ do {
             break;
         case 6:
             echo "Listado ordenado de las partidas jugadas";
-            ordenarArray($coleccionPartidas);
+            ordenarArray($miColeccionPartidas);
 
             //mostrar listado de partidas ordenados por jugador y por palabra
             //aca llame la funcion que hice arriba xd -M
