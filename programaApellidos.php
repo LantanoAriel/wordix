@@ -396,24 +396,7 @@ do {
 
             break;
         case 4:
-            $usuario = solicitarJugador();
            
-            echo " ***********************************\n";
-            echo "      PRIMERA PARTIDA GANADORA:\n";
-            echo "*************************************";
-
-            $indiceGanada = primerPartidaGanada($usuario, $miColeccionPartidas, $elMax);
-            $esJugador = esJugador($miColeccionPartidas, $usuario);
-
-            if ($indiceGanada != -1) {
-                muestraUnaPar($miColeccionPartidas[$indiceGanada], $indiceGanada);
-            }
-            if (!$esJugador) {
-                echo "\n El jugador " . $usuario . " no existe.\n";
-            }
-            if ($indiceGanada == -1 && $esJugador) {
-                echo "\n El jugador " . $usuario . " no ganó ninguna partida.\n";
-            }
 
             //mostrar la primera partida ganadora
 
