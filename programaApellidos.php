@@ -458,5 +458,6 @@ do {
         default:
 
             echo "Ingrese un numero valido entre el 1 y el 8 \n";
+            
     }
 } while ($opcionElegida != 8);
