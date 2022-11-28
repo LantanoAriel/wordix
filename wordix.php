@@ -26,22 +26,23 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
 /***** DEFINICION DE FUNCIONES ********/
 /**************************************/
 
- /** Obtiene una coleccion de partidas
-  * @return array 
+/** Obtiene una coleccion de partidas
+ * @return array 
  */
-function cargarColeccionPartidas(){
-    $coleccionPartidas =[
-        ["palabraWordix" => "FUEGO","jugador" => "lilmauro","intentos" => "3","puntaje" => "4"],
-        ["palabraWordix" => "QUESO","jugador" => "brunardo","intentos" => "4","puntaje" => "5"],
-        ["palabraWordix" => "CASAS","jugador" => "mermariel","intentos" => "5","puntaje" => "2"],
-        ["palabraWordix" => "PLAZA","jugador" => "fabro","intentos" => "1","puntaje" => "17"],
-        ["palabraWordix" => "PERRO","jugador" => "fronchi","intentos" => "2","puntaje" => "15"],
-        ["palabraWordix" => "GOTAS","jugador" => "ariana","intentos" => "6","puntaje" => "7"],
-        ["palabraWordix" => "TINTO","jugador" => "santaclau","intentos" => "2","puntaje" => "16"],
-        ["palabraWordix" => "YUYOS","jugador" => "cristeanus","intentos" => "5","puntaje" => "11"],
-        ["palabraWordix" => "CLAVE","jugador" => "torchinsky","intentos" => "1","puntaje" => "20"],
-        ["palabraWordix" => "LUCES","jugador" => "joma","intentos" => "4","puntaje" => "12"]
-     ];
+function cargarColeccionPartidas()
+{
+    $coleccionPartidas = [
+        ["palabraWordix" => "FUEGO", "jugador" => "lilmauro", "intentos" => "3", "puntaje" => "4"],
+        ["palabraWordix" => "QUESO", "jugador" => "brunardo", "intentos" => "4", "puntaje" => "5"],
+        ["palabraWordix" => "CASAS", "jugador" => "mermariel", "intentos" => "5", "puntaje" => "2"],
+        ["palabraWordix" => "PLAZA", "jugador" => "fabro", "intentos" => "1", "puntaje" => "17"],
+        ["palabraWordix" => "PERRO", "jugador" => "fronchi", "intentos" => "2", "puntaje" => "15"],
+        ["palabraWordix" => "GOTAS", "jugador" => "ariana", "intentos" => "6", "puntaje" => "7"],
+        ["palabraWordix" => "TINTO", "jugador" => "santaclau", "intentos" => "2", "puntaje" => "16"],
+        ["palabraWordix" => "YUYOS", "jugador" => "cristeanus", "intentos" => "5", "puntaje" => "11"],
+        ["palabraWordix" => "CLAVE", "jugador" => "torchinsky", "intentos" => "1", "puntaje" => "20"],
+        ["palabraWordix" => "LUCES", "jugador" => "joma", "intentos" => "4", "puntaje" => "12"]
+    ];
     return $coleccionPartidas;
 }
 
@@ -55,9 +56,9 @@ function cargarColeccionPalabras()
     $coleccionPalabras = [
         "MUJER", "QUESO", "FUEGO", "CASAS", "RASGO",
         "GATOS", "GOTAS", "HUEVO", "TINTO", "NAVES",
-        "VERDE", "MELON", "YUYOS", "PIANO", "PISOS", 
+        "VERDE", "MELON", "YUYOS", "PIANO", "PISOS",
         "PERRO", "PLAZA", "DANZA", "LAPIZ", "RELOJ"
-        ];
+    ];
 
     return $coleccionPalabras;
 }
@@ -71,7 +72,7 @@ function cargarColeccionPalabras()
 function miMaxInd($coleccionPal)
 {
     //int $maxInd
-    $maxInd = count($coleccionPal)-1;
+    $maxInd = count($coleccionPal) - 1;
     return $maxInd;
 }
 
@@ -79,7 +80,8 @@ function miMaxInd($coleccionPal)
  * @param int $elMax
  * @return int
  */
-function miMenInd ($elMax){
+function miMenInd($elMax)
+{
     //int $minInd
     $minInd = $elMax - $elMax;
     return $minInd;
@@ -238,7 +240,7 @@ function iniciarTeclado()
     $teclado = [
         "A" => ESTADO_LETRA_DISPONIBLE, "B" => ESTADO_LETRA_DISPONIBLE, "C" => ESTADO_LETRA_DISPONIBLE, "D" => ESTADO_LETRA_DISPONIBLE, "E" => ESTADO_LETRA_DISPONIBLE,
         "F" => ESTADO_LETRA_DISPONIBLE, "G" => ESTADO_LETRA_DISPONIBLE, "H" => ESTADO_LETRA_DISPONIBLE, "I" => ESTADO_LETRA_DISPONIBLE, "J" => ESTADO_LETRA_DISPONIBLE,
-        "K" => ESTADO_LETRA_DISPONIBLE, "L" => ESTADO_LETRA_DISPONIBLE, "M" => ESTADO_LETRA_DISPONIBLE, "N" => ESTADO_LETRA_DISPONIBLE, 
+        "K" => ESTADO_LETRA_DISPONIBLE, "L" => ESTADO_LETRA_DISPONIBLE, "M" => ESTADO_LETRA_DISPONIBLE, "N" => ESTADO_LETRA_DISPONIBLE,
         "O" => ESTADO_LETRA_DISPONIBLE, "P" => ESTADO_LETRA_DISPONIBLE, "Q" => ESTADO_LETRA_DISPONIBLE, "R" => ESTADO_LETRA_DISPONIBLE, "S" => ESTADO_LETRA_DISPONIBLE,
         "T" => ESTADO_LETRA_DISPONIBLE, "U" => ESTADO_LETRA_DISPONIBLE, "V" => ESTADO_LETRA_DISPONIBLE, "W" => ESTADO_LETRA_DISPONIBLE, "X" => ESTADO_LETRA_DISPONIBLE,
         "Y" => ESTADO_LETRA_DISPONIBLE, "Z" => ESTADO_LETRA_DISPONIBLE
@@ -249,11 +251,11 @@ function iniciarTeclado()
 /**
  * Escribe en pantalla el estado del teclado. Acomoda las letras en el orden del teclado QWERTY
  * @param array $teclado
+ * @param array $ordenTeclado (arreglo indexado con el orden en que se debe escribir el teclado en pantalla)
+ * @param string $letra, $estado
  */
 function escribirTeclado($teclado)
-{
-    //array $ordenTeclado (arreglo indexado con el orden en que se debe escribir el teclado en pantalla)
-    //string $letra, $estado
+{   
     $ordenTeclado = [
         "salto",
         "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "salto",
@@ -395,35 +397,35 @@ function esIntentoGanado($estructuraPalabraIntento)
  * @param string $palabraWordix
  * @return int
  */
-function obtenerPuntajeWordix($palabraWordix, $nroIntento )  /* ****COMPLETAR***** parámetros formales necesarios */
+function obtenerPuntajeWordix($palabraWordix, $nroIntento)  /* ****COMPLETAR***** parámetros formales necesarios */
 {
     /*int $resultado, $i*/
-    
-    if ($nroIntento == 1){
+
+    if ($nroIntento == 1) {
         $resultado = 6;
-    } elseif ($nroIntento == 2){
+    } elseif ($nroIntento == 2) {
         $resultado = 5;
-    } elseif ($nroIntento == 3){
+    } elseif ($nroIntento == 3) {
         $resultado = 4;
-    } elseif ($nroIntento == 4){
+    } elseif ($nroIntento == 4) {
         $resultado = 3;
-    } elseif ($nroIntento == 5){
+    } elseif ($nroIntento == 5) {
         $resultado = 2;
-    } elseif ($nroIntento == 6){
+    } elseif ($nroIntento == 6) {
         $resultado = 1;
     } else {
         $resultado = 0;
     }
-    for ($i = 0; $i < 5; $i++){
-        if ($palabraWordix[$i] <= "m" && $palabraWordix[$i] != "a" && $palabraWordix[$i] != "e" && $palabraWordix[$i] != "i" && $palabraWordix[$i] != "o" && $palabraWordix[$i] != "u"){
-                $resultado = $resultado + 2;
-        } elseif ($palabraWordix[$i] > "m" && $palabraWordix[$i] != "a" && $palabraWordix[$i] != "e" && $palabraWordix[$i] != "i" && $palabraWordix[$i] != "o" && $palabraWordix[$i] != "u"){
-                $resultado = $resultado + 3;
+    for ($i = 0; $i < 5; $i++) {
+        if ($palabraWordix[$i] <= "m" && $palabraWordix[$i] != "a" && $palabraWordix[$i] != "e" && $palabraWordix[$i] != "i" && $palabraWordix[$i] != "o" && $palabraWordix[$i] != "u") {
+            $resultado = $resultado + 2;
+        } elseif ($palabraWordix[$i] > "m" && $palabraWordix[$i] != "a" && $palabraWordix[$i] != "e" && $palabraWordix[$i] != "i" && $palabraWordix[$i] != "o" && $palabraWordix[$i] != "u") {
+            $resultado = $resultado + 3;
         } else {
-                $resultado = $resultado + 1;
+            $resultado = $resultado + 1;
         }
     }
-    
+
     return $resultado;
 } //ATENTOS al probarlo en el programa da un error, pero si se prueba por separado funciona, hay que revisar eso -B
 

@@ -33,14 +33,11 @@ function esJugador($coleccionJugadores, $player)
     return $esJugador;
 }
 
-/*
- * muestra el resumen de el jugador ingresado
- * @param string $nombreDelJugador
- * @return array
- */
-/*
+
+/** 
  * retorna el resumen del jugador
  * @param string $jugador
+ * @return array
  */
 function resumenJugador($jugador, $jugoPartidas)
 {
@@ -138,8 +135,13 @@ function mostrarDatos($coleccionJuegos, $nIndice)
     }
 }
 
-
-function comparar($a, $b) //esta funcion nos permitira realizar la comparacion para $coleccionPalabras
+//Esta funcion nos permitira realizar la comparacion para $coleccionPalabras
+/**
+ * @param array $a
+ * @param array $b
+ * @return int
+ */
+function comparar($a, $b) 
 {
     if ($a["jugador"] == $b["jugador"]) {
         $orden = 0;
@@ -151,10 +153,15 @@ function comparar($a, $b) //esta funcion nos permitira realizar la comparacion p
 
     return $orden;
 }
-//Esta funcion es llamada dentro de la funcion ordenarArray para la opcion 6 del menu -M
 
+//Esta funcion nos permitira realizar la comparacion para $coleccionPalabras
+/**
+ * @param array $a
+ * @param array $b
+ * @return int
+ */
 
-function comparar2($a, $b) //esta funcion nos permitira realizar la comparacion para $coleccionPalabras
+function comparar2($a, $b) 
 {
     if ($a["palabraWordix"] == $b["palabraWordix"]) {
         $orden = 0;
@@ -164,7 +171,6 @@ function comparar2($a, $b) //esta funcion nos permitira realizar la comparacion 
         $orden = 1;
     }
 
-    //Esta funcion tambien es llamada dentro de la funcion ordenarArray para la opcion 6 del menu -M
     return $orden;
 }
 
@@ -172,6 +178,7 @@ function comparar2($a, $b) //esta funcion nos permitira realizar la comparacion 
 /**
  * funcion para ordenar la coleccion de partidas
  * @param array $sinOrdenar
+ * @return void
  */
 function ordenarArray($sinOrdenar)
 {
@@ -183,7 +190,7 @@ function ordenarArray($sinOrdenar)
 
 
 /** 
- * solicita un nombre de jugador y lo convierte en minusculas
+ * solicita un nombre de jugador y lo convierte en minusculas retornado asi jugador en minuscula.
  * @return string 
  */
 function solicitarJugador()
@@ -231,10 +238,15 @@ function resumenJugadores($arrayResumen, $nombreJ)
 
 
 
-//Verifica si el jugador ya utilizo la palabra
-/*
-*
+
+/** 
+ * Verifica si la palabra ingresada esta repetida o no y devuelve true/false
+ * @param string $usuario
+ * @param string $palabra
+ * @param array $comprobar
+ * @return boolean
 */
+
 function palabraRepetida($usuario, $palabra, $comprobar)
 {
     $aux = false;
@@ -249,6 +261,13 @@ function palabraRepetida($usuario, $palabra, $comprobar)
         return $aux;
     }
 }
+
+/**
+ * Lo que hace este modulo es chequear si el jugador existe, si tiene partidas y dependiendo de eso muestra la primera partida ganada por pantalla, no gano o no existe.
+ * @param string $usuario
+ * @param array $miColeccionPartidas
+ * @return void
+ */
 
 function primerPartidaGanada($usuario, $miColeccionPartidas)
 {
@@ -395,16 +414,11 @@ do {
                 echo "\n el usuario no existe \n";
             }
 
-            //mostrar resumen de jugador
-
             break;
         case 6:
 
             echo "Listado ordenado de las partidas jugadas";
             ordenarArray($miColeccionPartidas);
-
-            //mostrar listado de partidas ordenados por jugador y por palabra
-            //aca llame la funcion que hice arriba xd -M
 
             break;
 
@@ -437,7 +451,7 @@ do {
 
             echo chr(27) . chr(91) . 'H' . chr(27) . chr(91) . 'J';
             echo "\n**************************************";
-            echo "\n* Gracias por jugar a con mi corazón *";
+            echo "\n*Gracias por jugar con mi corazón</3 *";
             echo "\n**************************************	\n";
             break;
 
