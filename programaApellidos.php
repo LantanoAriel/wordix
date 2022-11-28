@@ -33,14 +33,9 @@ function esJugador($coleccionJugadores, $player)
     return $esJugador;
 }
 
-/*
- * muestra el resumen de el jugador ingresado
+/** muestra el resumen de el jugador ingresado
  * @param string $nombreDelJugador
  * @return array
- */
-/*
- * retorna el resumen del jugador
- * @param string $jugador
  */
 function resumenJugador($jugador, $jugoPartidas){
  
@@ -98,6 +93,7 @@ echo "\n**\n";
 
 /** Muestra el menú para el usuario
  * @param string $player
+ * @return void
  */
 function mostrarMenu()
 {
@@ -134,8 +130,12 @@ function mostrarDatos($coleccionJuegos, $nIndice)
     }
 }
 
-
-function comparar($a, $b) //esta funcion nos permitira realizar la comparacion para $coleccionPalabras
+/** Permite realizar la comparacion para $comparacionPalabras
+ * @param string @a
+ * @param string @b
+ * @return int
+ */
+function comparar($a, $b) 
 {
     if ($a["jugador"] == $b["jugador"]) {
         $orden = 0;
@@ -147,9 +147,14 @@ function comparar($a, $b) //esta funcion nos permitira realizar la comparacion p
 
     return $orden;
 }
+
 //Esta funcion es llamada dentro de la funcion ordenarArray para la opcion 6 del menu -M
 
-
+/** Permite realizar la comparacion para $coleccionPalabras
+ * @param string $a
+ * @param string $b
+ * @return int
+ */
 function comparar2($a, $b) //esta funcion nos permitira realizar la comparacion para $coleccionPalabras
 {
     if ($a["palabraWordix"] == $b["palabraWordix"]) {
@@ -168,6 +173,7 @@ function comparar2($a, $b) //esta funcion nos permitira realizar la comparacion 
 /**
  * funcion para ordenar la coleccion de partidas
  * @param array $sinOrdenar
+ * @return void
  */
 function ordenarArray($sinOrdenar)
 {
@@ -175,6 +181,7 @@ function ordenarArray($sinOrdenar)
     uasort($sinOrdenar, "comparar");
     print_r($sinOrdenar);
 }
+
 //esta es la funcion sin retorno que se nos pedia en el inciso para la opcion 6 del menu -M
 
 
@@ -227,12 +234,15 @@ function resumenJugadores($arrayResumen, $nombreJ)
 
 
 
-//Verifica si el jugador ya utilizo la palabra
-/*
-*
-*/
+/** Verifica si el usuario ya uso una palabra
+ * @param string $usuario
+ * @param string $palabra
+ * @param array $comprobar
+ * @return boolean
+ */
 function palabraRepetida($usuario, $palabra, $comprobar)
 {
+    // boolean $aux
     $aux = false;
     foreach ($comprobar as $key => $elemento) {
         if ($elemento['jugador'] == $usuario && $elemento['palabraWordix'] == $palabra) {
@@ -245,7 +255,10 @@ function palabraRepetida($usuario, $palabra, $comprobar)
         return $aux;
     }
 }
-
+/** Busca la primera partida ganada del usuario ingresado
+ * @param string $usuario
+ * @param array $miColeccionPartidas
+ */
 function primerPartidaGanada($usuario, $miColeccionPartidas)
 {
     $aux = 0;
