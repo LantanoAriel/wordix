@@ -419,6 +419,7 @@ do {
             $nuevaPalabra = strtoupper($nuevaPalabra);
             if ($verificaPalabra == 1 && strlen($nuevaPalabra) == 5 && $valido == false) {
                 array_push($miColeccionPalabras, $nuevaPalabra);
+                echo "\n Su palabra se ingreso correctamente!";
             } elseif ($verificaPalabra != 1) {
                 echo "Lo ingresado debe ser una palabra";
             } elseif ($valido == true) {
