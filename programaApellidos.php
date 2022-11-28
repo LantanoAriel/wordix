@@ -218,6 +218,71 @@ function palabraRepetida($usuario, $palabra, $comprobar)
         return $aux;
     }
 }
+
+
+/**
+ * muestra el resumen de el jugador ingresado
+ * @param string $nombreDelJugador
+ * @return array
+ */
+/**
+ * retorna el resumen del jugador
+ * @param string $jugador
+ */
+function resumenJugador($jugador, $jugoPartidas){
+ 
+    $miColeccionPartidas =
+        ["jugador" => $jugador,"partidas" => 0,"puntaje" => 0,"victorias" => 0, "intento1" => 0,"intento2" => 0,"intento3" => 0,"intento4" => 0,"intento5" => 0,"intento6" => 0];
+
+        
+        foreach ($jugoPartidas as $indicePartida => $infoPar) {
+            if ($jugador == $infoPar["jugador"]) {
+                $miColeccionPartidas["partidas"] += 1;
+                $miColeccionPartidas["puntaje"] += $infoPar["puntaje"];
+                if ($infoPar["puntaje"] >0) {
+                    $miColeccionPartidas["victorias"] += 1;
+                }
+                switch ($infoPar["intentos"]) {
+                    case 1:
+                        $miColeccionPartidas["intento1"] += 1;
+                        break;
+        
+                    case 2:
+                        $miColeccionPartidas["intento2"] += 1;
+                        break;
+                    case 3:
+                        $miColeccionPartidas["intento3"] += 1;
+                        break;
+                    case 4:
+                        $miColeccionPartidas["intento4"] += 1;
+                        break;
+                    case 5:
+                        $miColeccionPartidas["intento5"] += 1;
+                        break;
+                    case 6:
+                        $miColeccionPartidas["intento6"] += 1;
+                        break;
+        
+                }
+            }
+        }
+        $porcentaje = $miColeccionPartidas["victorias"]*100 / $miColeccionPartidas["partidas"];
+
+        echo "\n***************************************************\n";
+        echo "Jugador: " . $jugador . "\n";
+        echo "Partidas: " .$miColeccionPartidas ["partidas"]. "\n";
+        echo "Puntaje Total: " .$miColeccionPartidas ["puntaje"]. "\n";
+        echo "Victorias: " .$miColeccionPartidas ["victorias"]. "\n";
+        echo "Porcentaje Victorias: " .round($porcentaje,2). "%\n";
+        echo "Adivinadas: \n";
+        echo "      Intento 1: " .$miColeccionPartidas["intento1"]. "\n";
+        echo "      Intento 2: " .$miColeccionPartidas["intento2"]. "\n";
+        echo "      Intento 3: " .$miColeccionPartidas["intento3"]. "\n";
+        echo "      Intento 4: " .$miColeccionPartidas["intento4"]. "\n";
+        echo "      Intento 5: " .$miColeccionPartidas["intento5"]. "\n";
+        echo "      Intento 6: " .$miColeccionPartidas["intento6"]. "\n";
+        echo "***************************************************\n";
+    }    
 /* ... COMPLETAR ... */
 
 
@@ -241,8 +306,9 @@ $nPartida = 0;
 $palabraNombre = [];
 $miColeccionPartidas = cargarColeccionPartidas();
 $miColeccionPalabras = cargarColeccionPalabras();
+$elMax = miMaxInd($miColeccionPartidas);
 $i = 0;
-
+$estadisticasJugador = [];
 //PROCESO:
 
 //print_r($partida);
@@ -330,7 +396,7 @@ do {
             break;
         case 4:
             $usuario = solicitarJugador();
-            $elMax = miMaxInd($miColeccionPalabras);
+           
             echo " ***********************************\n";
             echo "      PRIMERA PARTIDA GANADORA:\n";
             echo "*************************************";
@@ -352,14 +418,14 @@ do {
 
             break;
         case 5:
-
-            do {
-                echo "escriba el nombre del jugador";
-                $nombreJ = trim(fgets(STDIN));
-                print_r($resumenGlobal[$nombreJ]);
-                echo "desea ver el resumen de otro jugador?(s/n)";
-            } while ($deNuevo == "si");
-
+            $jugador = solicitarJugador();
+            $esJugador = esJugador($miColeccionPartidas, $jugador);
+            if ($esJugador) {
+                resumenJugador($jugador, $miColeccionPartidas);
+            }else {
+                echo "\n el usuario no existe \n";
+            }
+           
             //mostrar resumen de jugador
 
             break;
