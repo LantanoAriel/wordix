@@ -86,26 +86,7 @@ function ordenarArray($sinOrdenar)
 }
 //esta es la funcion sin retorno que se nos pedia en el inciso para la opcion 6 del menu -M
 
-/** Muestra una partida guardada 
- * @param array $unaPartida
- * @param int $numPartida
- * @return void
- */
-function muestraUnaPar($unaPartida, $numPartida)
-{
-    echo "\n";
-    echo " Partida WORDIX " . $numPartida . ": Palabra " . $unaPartida["palabraWordix"] . "\n";
-    echo " Puntaje: " . $unaPartida["puntaje"] . "\n";
-    echo " Jugador: " . $unaPartida["jugador"] . "\n";
-    if ($unaPartida["puntaje"] == 0) {
-        echo " intentos: no adivino la palabra\n";
-    } else {
-        echo " intentos: " . $unaPartida["intentos"] . "\n";
-    }
-    echo "*****************************************\n";
-    echo " ***************************************\n";
-    echo "\n";
-}
+
 
 
 
@@ -134,27 +115,7 @@ function solicitarJugador()
 
 
 
-/** 
- * solicita un nombre de jugador y muestra el resumen de sus partidas
- * @param array $arrayResumen
- * @param string $nombreJ
- * @return string 
- */
-function resumenJugadores($arrayResumen, $nombreJ)
-{
-    //string $resumen//
 
-    echo "\n";
-    $key = array_search("$nombreJ", array_column($arrayResumen, 'jugador'));
-    if ($arrayResumen[$key]["jugador"] == $nombreJ) {
-
-        $resumen = print_r($arrayResumen[$key]);
-    } else {
-        $resumen = "\n el jugador ingresado aun no jugo una partida";
-        echo $resumen;
-    }
-    return $resumen;
-}
 
 //esta funcion la realize para la opcion 5 del menu :) -M
 
