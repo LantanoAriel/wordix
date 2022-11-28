@@ -34,7 +34,6 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
   * @return array 
  */
 function cargarColeccionPartidas(){
-    $coleccionPartidas = [];
     $coleccionPartidas =[
         ["palabraWordix" => "FUEGO","jugador" => "lilmauro","intentos" => "3","puntaje" => "4"],
         ["palabraWordix" => "QUESO","jugador" => "brunardo","intentos" => "4","puntaje" => "5"],
@@ -47,7 +46,7 @@ function cargarColeccionPartidas(){
         ["palabraWordix" => "CLAVE","jugador" => "ivanovsky","intentos" => "1","puntaje" => "20"],
         ["palabraWordix" => "LUCES","jugador" => "joma","intentos" => "4","puntaje" => "12"]
      ];
-    return ($coleccionPartidas);
+    return $coleccionPartidas;
 }
 
 
@@ -64,7 +63,7 @@ function cargarColeccionPalabras()
         "PERRO", "PLAZA", "DANZA", "LAPIZ", "RELOJ"
         ];
 
-    return ($coleccionPalabras);
+    return $coleccionPalabras;
 }
 
 
@@ -77,7 +76,7 @@ function miMaxInd($coleccionPal)
 {
     //int $maxInd
     $maxInd = count($coleccionPal)-1;
-    return ($maxInd);
+    return $maxInd;
 }
 
 /** Determina el indice Minimo de un array
@@ -87,7 +86,7 @@ function miMaxInd($coleccionPal)
 function miMenInd ($elMax){
     //int $minInd
     $minInd = $elMax - $elMax;
-    return ($minInd);
+    return $minInd;
 }
 
 
@@ -101,10 +100,10 @@ function miMenInd ($elMax){
 function solicitarNumeroEntre($min, $max)
 {
     //int $numero
-    echo "ingrese el numero de la palabra: ";
+    echo "ingrese el numero de la palabra entre " . $min . " y " . $max . ": ";
     $numero = trim(fgets(STDIN));
     while (!is_integer($numero) && !($numero >= $min && $numero <= $max)) {
-        echo "Debe ingresar un número entre " . $min . " y " . $max . ": ";
+        echo "Debe ingresar un número entre " . $min . " y " . $max . "!";
         $numero = trim(fgets(STDIN));
     }
     return $numero;
