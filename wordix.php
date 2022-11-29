@@ -112,8 +112,8 @@ function solicitarNumeroEntre($min, $max)
     //int $numero
     echo "ingrese un numero entre " . ($min + 1) . " y " . ($max + 1) . ": ";
     $numero = trim(fgets(STDIN));
-    while (!is_integer($numero) && !($numero >= $min && $numero <= $max)) {
-        echo "Debe ingresar un número entre " . $min . " y " . $max . "!";
+    while (!is_integer($numero) && !($numero >= ($min + 1) && $numero <= ($max + 1))) {
+        echo "Debe ingresar un número entre " . ($min + 1) . " y " . ($max + 1) . "!";
         $numero = trim(fgets(STDIN));
     }
     $numero = $numero -1;
