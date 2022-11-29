@@ -87,10 +87,19 @@ function miMenInd($max)
     return $minInd;
 }
 
+function verificaValMenu($min, $max)
+{
+    //int $numero
+    echo "Elija una opcion! ";
+    $numero = trim(fgets(STDIN));
+    while (!is_integer($numero) && !($numero >= $min && $numero <= $max)) {
+        echo "Debe ingresar un número entero: ";
+        $numero = trim(fgets(STDIN));
+    }
+    return $numero;
+}
 
-
-/**
- * verifica si el valor es entero y si esta dentro del rango
+/** verifica si el valor es entero y si esta dentro del rango
  * @param int $min
  * @param int $max
  * @return int
@@ -98,12 +107,13 @@ function miMenInd($max)
 function solicitarNumeroEntre($min, $max)
 {
     //int $numero
-    echo "ingrese el numero de la palabra entre " . $min . " y " . $max . ": ";
+    echo "ingrese un numero entre " . ($min + 1) . " y " . ($max + 1) . ": ";
     $numero = trim(fgets(STDIN));
     while (!is_integer($numero) && !($numero >= $min && $numero <= $max)) {
         echo "Debe ingresar un número entre " . $min . " y " . $max . "!";
         $numero = trim(fgets(STDIN));
     }
+    $numero = $numero -1;
     return $numero;
 }
 

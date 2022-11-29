@@ -128,7 +128,7 @@ function mostrarDatos($coleccionJuegos, $nIndice)
     $datoPartida = $coleccionJuegos[$nIndice];
 
     if ($datoPartida["intentos"] > 0) {
-        echo "Partida WORDIX " . $nIndice . ": palabra " . $datoPartida["palabraWordix"] . "\n" . "Jugador: " . $datoPartida["jugador"] . "\n" . "Puntaje: " . $datoPartida["puntaje"] . " puntos\n" . "Intento: Adivinó la palabra en " . $datoPartida["intentos"] . " intentos";
+        echo "Partida WORDIX " . ($nIndice + 1). ": palabra " . $datoPartida["palabraWordix"] . "\n" . "Jugador: " . $datoPartida["jugador"] . "\n" . "Puntaje: " . $datoPartida["puntaje"] . " puntos\n" . "Intento: Adivinó la palabra en " . $datoPartida["intentos"] . " intentos";
     } else {
 
         echo "Partida WORDIX " . $nIndice . ": palabra " . $datoPartida["palabraWordix"] . "\n" . "Jugador: " . $datoPartida["jugador"] . "\n" . "Puntaje: " . $datoPartida["puntaje"] . " puntos" . "\n" . "Intento: No adivinó la palabra.";
@@ -291,7 +291,7 @@ function primerPartidaGanada($usuario, $miColeccionPartidas)
     switch ($aux) {
         case 1:
             echo "********************************************************************\n";
-            echo "* Partida WORDIX " . $priPar . " : Palabra " . $datos['palabraWordix'] . "\n";
+            echo "* Partida WORDIX " . ($priPar + 1) . " : Palabra " . $datos['palabraWordix'] . "\n";
             echo "* Jugador: " . $datos['jugador'] . "\n";
             echo "* Puntaje: " . $datos['puntaje'] . " Puntos\n";
             echo "* Intentos: " . $datos['intentos'] . "\n";
@@ -334,7 +334,9 @@ $palabraNombre = [];
 $miColeccionPartidas = cargarColeccionPartidas();
 $miColeccionPalabras = cargarColeccionPalabras();
 $i = 0;
-
+$opcionElegida = 0;
+$minMenu=1;
+$maxMenu=8;
 //PROCESO:
 
 //print_r($partida);
@@ -344,9 +346,8 @@ $i = 0;
 do {
     mostrarMenu();
     echo "Seleccione una de las opciones: \n";
-    $opcionElegida = trim(fgets(STDIN));
-
-
+    $opcionElegida =verificaValMenu($minMenu, $maxMenu); 
+    
     switch ($opcionElegida) {
         case 1:
 
@@ -387,9 +388,10 @@ do {
             $elMax = miMaxInd($miColeccionPartidas);
             $elMin = miMenInd($elMax);
 
-            echo "seleccione una partida entre la partida numero " . $elMin . " y la numero " . $elMax . "\n";
+            echo "seleccione una partida entre la partida numero " . ($elMin + 1) . " y la numero " . ($elMax + 1) . "\n";
 
             $indice = trim(fgets(STDIN));
+            $indice = $indice - 1;
 
             if ($indice >= 0 && $indice < count($miColeccionPartidas)) {
                 mostrarDatos($miColeccionPartidas, $indice);
