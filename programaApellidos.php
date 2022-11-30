@@ -245,16 +245,20 @@ function resumenJugadores($arrayResumen, $nombreJ)
 function palabraRepetida($usuario, $palabra, $comprobar)
 {
     $aux = false;
+    $i = 0;
+    while ($i < count($comprobar) && $comprobar[$i]['jugador'] != $usuario && $comprobar[$i]['palabraWordix'] != $palabra){
+        $i++;
+    }
+    if($i < count($comprobar)){
+        $aux = true;
+    }
+    return $aux;
+    /*$aux = false;
     foreach ($comprobar as $key => $elemento) {
         if ($elemento['jugador'] == $usuario && $elemento['palabraWordix'] == $palabra) {
             $aux = true;
         }
-    }
-    if ($aux) {
-        return $aux;
-    } else {
-        return $aux;
-    }
+    }*/
 }
 
 /**
