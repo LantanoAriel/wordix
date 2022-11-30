@@ -246,7 +246,7 @@ function palabraRepetida($usuario, $palabra, $comprobar)
 {
     $aux = false;
     $i = 0;
-    while ($i < count($comprobar) && $comprobar[$i]['jugador'] != $usuario && $comprobar[$i]['palabraWordix'] != $palabra){
+    while ($i < count($comprobar) && ($comprobar[$i]['jugador'] != $usuario || $comprobar[$i]['palabraWordix'] != $palabra)){
         $i++;
     }
     if($i < count($comprobar)){
