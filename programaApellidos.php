@@ -256,29 +256,8 @@ function palabraRepetida($usuario, $palabra, $comprobar)
 }
 
 /**
- * Lo que hace este modulo es chequear si el jugador existe, si tiene partidas y dependiendo de eso muestra la primera partida ganada por pantalla, no gano o no existe.
- * @param string $usuario
- * @param array $miColeccionPartidas
- * @return void
- */
-
-/*function existeJugador($arrayJugadores, $jugador){
-    $i = 0;
-    $existeJugador = false;
-    $indiceMaximo = count($arrayJugadores) - 1;
-    while($i < $indiceMaximo && $arrayJugadores[$i]["jugador"]!= $jugador){
-        $i = $i + 1;
-     }
-     if ($arrayJugadores[$i]["jugador"] == $jugador){
-        $existeJugador = true;
-     }
-     
-     return $existeJugador;
-}*/
-/**
-/
  * Dado un jugador, retorna el índice de su primera partida ganada guardada en el arreglo. Sino retorna -1
- * @param string $jgoador
+ * @param string $jogador
  * @param array $coleccionPartidas
  * @param int $indice
  * @return int $numeroPartida
@@ -296,50 +275,6 @@ function primerPartidaGanada($jogador, $partidasGuardadas, $numeroPartida)
     }
     return $indice;
 }
-function paPrimerPartidaGanada($usuario, $miColeccionPartidas)
-{
-
-
-
-
-    /*for ($i = 0; $i < count($miColeccionPartidas); $i++) {
-        if ($miColeccionPartidas[$i]['jugador'] == $usuario && $miColeccionPartidas[$i]['intentos'] > 0) {
-            $aux = 1;
-        } else if ($miColeccionPartidas[$i]['jugador'] == $usuario && $miColeccionPartidas[$i]['intentos'] == 0) {
-            $aux = 2;
-        }
-    }
-    $datos = [];
-
-    for ($i = 0; $i < count($miColeccionPartidas); $i++) {
-        if ($miColeccionPartidas[$i]['jugador'] == $usuario && $miColeccionPartidas[$i]['intentos'] > 0) {
-
-            $datos = $datos + $miColeccionPartidas[$i];
-            $priPar = array_search($usuario, array_column($miColeccionPartidas, 'jugador'));
-        }
-    }*/
-    /*switch($aux){
-        case 1:
-            echo "********************************************************************\n";
-            echo "* Partida WORDIX " . ($i) . " : Palabra " . $datos['palabraWordix'] . "\n";
-            echo "* Jugador: " . $datos['jugador'] . "\n";
-            echo "* Puntaje: " . $datos['puntaje'] . " Puntos\n";
-            echo "* Intentos: " . $datos['intentos'] . "\n";
-            echo "********************************************************************\n";
-            break;
-        case 2:
-            echo "*************************************************************\n";
-            echo "* El jugador " . $usuario . " no a ganado ninguna partida   *\n";
-            echo "*************************************************************\n";
-            break;
-        default:
-            echo "*************************\n";
-            echo "* El jugador no existe  *\n";
-            echo "*************************\n";
-            break;
-    }*/
-}
-
 /* ... COMPLETAR ... */
 
 
